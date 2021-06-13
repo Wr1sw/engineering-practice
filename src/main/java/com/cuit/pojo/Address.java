@@ -1,4 +1,4 @@
-package CUIT.Bean;
+package com.cuit.pojo;
 
 public class Address {
 

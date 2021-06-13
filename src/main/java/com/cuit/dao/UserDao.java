@@ -1,4 +1,4 @@
-package CUIT.Dao;
+package com.cuit.dao;
 
 
 import java.util.List;

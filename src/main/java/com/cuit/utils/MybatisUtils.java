@@ -1,4 +1,4 @@
-package CUIT.utils;
+package com.cuit.utils;
 
 
 import org.apache.ibatis.io.Resources;
