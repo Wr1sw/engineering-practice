@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysqlTrial
+ Source Server         : mysql57
  Source Server Type    : MySQL
- Source Server Version : 80016
+ Source Server Version : 50734
  Source Host           : localhost:3306
  Source Schema         : engineerpractice
 
  Target Server Type    : MySQL
- Target Server Version : 80016
+ Target Server Version : 50734
  File Encoding         : 65001
 
- Date: 13/06/2021 15:59:05
+ Date: 14/06/2021 23:01:57
 */
 
 SET NAMES utf8mb4;
@@ -22,13 +22,13 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address`  (
-  `user_id` int(10) NOT NULL,
+  `userId` int(10) NOT NULL,
   `address1` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `address2` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `address3` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `address4` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `address5` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`user_id`) USING BTREE
+  PRIMARY KEY (`userId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -41,10 +41,10 @@ INSERT INTO `address` VALUES (1, '成都信息工程大学', '清华大学', '�
 -- ----------------------------
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin`  (
-  `admin_id` int(10) NOT NULL,
-  `admin_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `admin_password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`admin_id`) USING BTREE
+  `adminId` int(10) NOT NULL,
+  `adminName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `adminPassword` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`adminId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -61,13 +61,13 @@ INSERT INTO `admin` VALUES (5, '刘荣垚', '12345');
 -- ----------------------------
 DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods`  (
-  `goods_id` int(10) NOT NULL COMMENT '商品id',
-  `goods_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品名',
-  `goods_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品类型',
-  `goods_buyCount` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '销售量',
-  `goods_price` float(10, 2) NOT NULL COMMENT '商品价格',
-  `goods_remainNum` int(10) NOT NULL COMMENT 's',
-  PRIMARY KEY (`goods_id`) USING BTREE
+  `goodsId` int(10) NOT NULL COMMENT '商品id',
+  `goodsName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品名',
+  `goodsType` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '商品类型',
+  `goodsBuyCount` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '销售量',
+  `goodsPrice` float(10, 2) NOT NULL COMMENT '商品价格',
+  `goodsRemainNum` int(10) NOT NULL COMMENT 's',
+  PRIMARY KEY (`goodsId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -80,12 +80,12 @@ INSERT INTO `goods` VALUES (1, '华为手机壳', '0', '7w+', 45.00, 678);
 -- ----------------------------
 DROP TABLE IF EXISTS `hobby`;
 CREATE TABLE `hobby`  (
-  `user_id` int(10) NOT NULL,
+  `userId` int(10) NOT NULL,
   `hobby1` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `hobby2` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `hobby3` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `hobby4` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`user_id`) USING BTREE
+  PRIMARY KEY (`userId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -98,28 +98,32 @@ INSERT INTO `hobby` VALUES (1, '篮球', '羽毛球', '乒乓球', '排球');
 -- ----------------------------
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order`  (
-  `order_id` int(10) NOT NULL,
-  `oder_reciever` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `order_address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `order_phone` int(11) NOT NULL,
-  `order_message` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `order_buyer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `order_totalPrice` float(10, 2) NOT NULL,
-  `shopcar_id` int(10) NOT NULL,
-  `goods_id` int(10) NOT NULL,
-  PRIMARY KEY (`order_id`) USING BTREE,
-  INDEX `shopcar_id`(`shopcar_id`) USING BTREE,
-  INDEX `goods_id1`(`goods_id`) USING BTREE
+  `orderId` int(10) NOT NULL,
+  `oderReciever` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `orderAddress` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `orderPhone` int(11) NOT NULL,
+  `orderMessage` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `orderBuyer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `orderTotalPrice` float(10, 2) NOT NULL,
+  `shopcarId` int(10) NOT NULL,
+  `goodsId` int(10) NOT NULL,
+  PRIMARY KEY (`orderId`) USING BTREE,
+  INDEX `shopcar_id`(`shopcarId`) USING BTREE,
+  INDEX `goods_id1`(`goodsId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of order
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for picture
 -- ----------------------------
 DROP TABLE IF EXISTS `picture`;
 CREATE TABLE `picture`  (
-  `goods_id` int(10) NOT NULL,
-  `picture_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`goods_id`, `picture_url`) USING BTREE
+  `goodsId` int(10) NOT NULL,
+  `pictureUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`goodsId`, `pictureUrl`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -132,25 +136,29 @@ INSERT INTO `picture` VALUES (1, '/xxxx/xx.jpg');
 -- ----------------------------
 DROP TABLE IF EXISTS `shopcar`;
 CREATE TABLE `shopcar`  (
-  `shopcar_id` int(10) NOT NULL,
-  `goods_addtime` datetime(0) NOT NULL,
-  `goods_num` int(11) NOT NULL,
-  `shopcar_picture` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `user_id` int(10) NOT NULL,
-  `goods_id` int(10) NOT NULL,
-  PRIMARY KEY (`shopcar_id`) USING BTREE,
-  INDEX `user_id`(`user_id`) USING BTREE,
-  INDEX `goods_id`(`goods_id`) USING BTREE
+  `shopcarId` int(10) NOT NULL,
+  `goodsAddtime` datetime(0) NOT NULL,
+  `goodsNum` int(11) NOT NULL,
+  `shopcarPicture` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `userId` int(10) NOT NULL,
+  `goodsId` int(10) NOT NULL,
+  PRIMARY KEY (`shopcarId`) USING BTREE,
+  INDEX `user_id`(`userId`) USING BTREE,
+  INDEX `goods_id`(`goodsId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of shopcar
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for types
 -- ----------------------------
 DROP TABLE IF EXISTS `types`;
 CREATE TABLE `types`  (
-  `type_id` int(11) NOT NULL,
-  `type_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`type_id`) USING BTREE
+  `typeId` int(11) NOT NULL,
+  `typeName` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`typeId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -169,21 +177,22 @@ INSERT INTO `types` VALUES (6, '平板');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `user_id` int(10) NOT NULL,
-  `user_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `user_password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `user_email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `user_telphone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `user_qq` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `user_birthday` date NULL DEFAULT NULL,
-  `user_registerTime` datetime(0) NOT NULL,
-  `user_pictureUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`user_id`) USING BTREE
+  `userId` int(10) NOT NULL,
+  `userName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `userPassword` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `userEmail` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `userTelphone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `userQq` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `userBirthday` date NULL DEFAULT NULL,
+  `userRegistertime` datetime(0) NOT NULL,
+  `userPictureurl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`userId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1, '夏厚雪', '123456', '123456@163.com', '123456', '1234567', '2000-06-06', '2021-06-13 00:00:00', 'xxxx');
+INSERT INTO `user` VALUES (2, '王义淑', '43111220', '840265545@qq.com', '18889894406', '840265545', '2001-12-20', '2021-06-14 00:00:00', 'xxxx');
 
 SET FOREIGN_KEY_CHECKS = 1;
