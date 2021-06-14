@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cuit.dao.PictureMapper">
+  <resultMap id="BaseResultMap" type="com.cuit.pojo.PictureKey">
+    <id column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <id column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.cuit.pojo.PictureKey">
+    delete from picture
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+      and picture_url = #{pictureUrl,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.cuit.pojo.PictureKey" useGeneratedKeys="true">
+    insert into picture (picture_url)
+    values (#{pictureUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.cuit.pojo.PictureKey" useGeneratedKeys="true">
+    insert into picture
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pictureUrl != null">
+        picture_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pictureUrl != null">
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

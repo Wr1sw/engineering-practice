@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cuit.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.cuit.pojo.Goods">
+    <id column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_type" jdbcType="VARCHAR" property="goodsType" />
+    <result column="goods_buyCount" jdbcType="VARCHAR" property="goodsBuycount" />
+    <result column="goods_price" jdbcType="FLOAT" property="goodsPrice" />
+    <result column="goods_remainNum" jdbcType="INTEGER" property="goodsRemainnum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    goods_id, goods_name, goods_type, goods_buyCount, goods_price, goods_remainNum
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.cuit.pojo.Goods" useGeneratedKeys="true">
+    insert into goods (goods_name, goods_type, goods_buyCount, 
+      goods_price, goods_remainNum)
+    values (#{goodsName,jdbcType=VARCHAR}, #{goodsType,jdbcType=VARCHAR}, #{goodsBuycount,jdbcType=VARCHAR}, 
+      #{goodsPrice,jdbcType=FLOAT}, #{goodsRemainnum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.cuit.pojo.Goods" useGeneratedKeys="true">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsType != null">
+        goods_type,
+      </if>
+      <if test="goodsBuycount != null">
+        goods_buyCount,
+      </if>
+      <if test="goodsPrice != null">
+        goods_price,
+      </if>
+      <if test="goodsRemainnum != null">
+        goods_remainNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsBuycount != null">
+        #{goodsBuycount,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=FLOAT},
+      </if>
+      <if test="goodsRemainnum != null">
+        #{goodsRemainnum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cuit.pojo.Goods">
+    update goods
+    <set>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null">
+        goods_type = #{goodsType,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsBuycount != null">
+        goods_buyCount = #{goodsBuycount,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        goods_price = #{goodsPrice,jdbcType=FLOAT},
+      </if>
+      <if test="goodsRemainnum != null">
+        goods_remainNum = #{goodsRemainnum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cuit.pojo.Goods">
+    update goods
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_type = #{goodsType,jdbcType=VARCHAR},
+      goods_buyCount = #{goodsBuycount,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=FLOAT},
+      goods_remainNum = #{goodsRemainnum,jdbcType=INTEGER}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

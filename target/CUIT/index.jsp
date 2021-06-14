@@ -8,12 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>xxx</title>
 </head>
 <body>
-    <%
-        String path = request.getContextPath();
-        response.sendRedirect(path+"/Pages/Trail.jsp");
-    %>
+    <h3>
+        <a href="${pageContext.request.contextPath}/Trail/">点击进入商城首页</a>
+    </h3>
 </body>
 </html>

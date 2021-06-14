@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cuit.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.cuit.pojo.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="address1" jdbcType="VARCHAR" property="address1" />
+    <result column="address2" jdbcType="VARCHAR" property="address2" />
+    <result column="address3" jdbcType="VARCHAR" property="address3" />
+    <result column="address4" jdbcType="VARCHAR" property="address4" />
+    <result column="address5" jdbcType="VARCHAR" property="address5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, address1, address2, address3, address4, address5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from address
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from address
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="user_id" keyProperty="userId" parameterType="com.cuit.pojo.User" useGeneratedKeys="true">
+    insert into address (address1, address2, address3, 
+      address4, address5)
+    values (#{address1,jdbcType=VARCHAR}, #{address2,jdbcType=VARCHAR}, #{address3,jdbcType=VARCHAR}, 
+      #{address4,jdbcType=VARCHAR}, #{address5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="user_id" keyProperty="userId" parameterType="com.cuit.pojo.User" useGeneratedKeys="true">
+    insert into address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="address1 != null">
+        address1,
+      </if>
+      <if test="address2 != null">
+        address2,
+      </if>
+      <if test="address3 != null">
+        address3,
+      </if>
+      <if test="address4 != null">
+        address4,
+      </if>
+      <if test="address5 != null">
+        address5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="address1 != null">
+        #{address1,jdbcType=VARCHAR},
+      </if>
+      <if test="address2 != null">
+        #{address2,jdbcType=VARCHAR},
+      </if>
+      <if test="address3 != null">
+        #{address3,jdbcType=VARCHAR},
+      </if>
+      <if test="address4 != null">
+        #{address4,jdbcType=VARCHAR},
+      </if>
+      <if test="address5 != null">
+        #{address5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cuit.pojo.User">
+    update address
+    <set>
+      <if test="address1 != null">
+        address1 = #{address1,jdbcType=VARCHAR},
+      </if>
+      <if test="address2 != null">
+        address2 = #{address2,jdbcType=VARCHAR},
+      </if>
+      <if test="address3 != null">
+        address3 = #{address3,jdbcType=VARCHAR},
+      </if>
+      <if test="address4 != null">
+        address4 = #{address4,jdbcType=VARCHAR},
+      </if>
+      <if test="address5 != null">
+        address5 = #{address5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cuit.pojo.User">
+    update address
+    set address1 = #{address1,jdbcType=VARCHAR},
+      address2 = #{address2,jdbcType=VARCHAR},
+      address3 = #{address3,jdbcType=VARCHAR},
+      address4 = #{address4,jdbcType=VARCHAR},
+      address5 = #{address5,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>
