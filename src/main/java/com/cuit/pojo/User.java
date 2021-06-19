@@ -1,54 +1,71 @@
 package com.cuit.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * user
- * @author 
+ * 用户
  */
 public class User implements Serializable {
-    private Integer userId;
+    /**
+     * 主键id
+     */
+    private Integer id;
 
+    /**
+     * 用户名
+     */
     private String userName;
 
-    private String userPassword;
+    /**
+     * 密码
+     */
+    private String passWord;
 
-    private String userEmail;
+    /**
+     * 手机号
+     */
+    private String phone;
 
-    private String userTelphone;
+    /**
+     * 真实姓名
+     */
+    private String realName;
 
-    public User(Integer userId, String userName, String userPassword, String userEmail, String userTelphone, String userQq, Date userBirthday, Date userRegistertime, String userPictureurl) {
-        this.userId = userId;
+    /**
+     * 性别
+     */
+    private String sex;
+
+    /**
+     * 地址
+     */
+    private String address;
+
+    /**
+     * 电子邮箱
+     */
+    private String email;
+
+    public User(Integer id, String userName, String passWord, String phone, String realName, String sex, String address, String email) {
+        this.id = id;
         this.userName = userName;
-        this.userPassword = userPassword;
-        this.userEmail = userEmail;
-        this.userTelphone = userTelphone;
-        this.userQq = userQq;
-        this.userBirthday = userBirthday;
-        this.userRegistertime = userRegistertime;
-        this.userPictureurl = userPictureurl;
+        this.passWord = passWord;
+        this.phone = phone;
+        this.realName = realName;
+        this.sex = sex;
+        this.address = address;
+        this.email = email;
     }
 
     public User() {
     }
 
-    private String userQq;
-
-    private Date userBirthday;
-
-    private Date userRegistertime;
-
-    private String userPictureurl;
-
-    private static final long serialVersionUID = 1L;
-
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -59,118 +76,65 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getUserTelphone() {
-        return userTelphone;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setUserTelphone(String userTelphone) {
-        this.userTelphone = userTelphone;
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 
-    public String getUserQq() {
-        return userQq;
+    public String getSex() {
+        return sex;
     }
 
-    public void setUserQq(String userQq) {
-        this.userQq = userQq;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public Date getUserBirthday() {
-        return userBirthday;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUserBirthday(Date userBirthday) {
-        this.userBirthday = userBirthday;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public Date getUserRegistertime() {
-        return userRegistertime;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserRegistertime(Date userRegistertime) {
-        this.userRegistertime = userRegistertime;
-    }
-
-    public String getUserPictureurl() {
-        return userPictureurl;
-    }
-
-    public void setUserPictureurl(String userPictureurl) {
-        this.userPictureurl = userPictureurl;
-    }
-
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        User other = (User) that;
-        return (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
-            && (this.getUserPassword() == null ? other.getUserPassword() == null : this.getUserPassword().equals(other.getUserPassword()))
-            && (this.getUserEmail() == null ? other.getUserEmail() == null : this.getUserEmail().equals(other.getUserEmail()))
-            && (this.getUserTelphone() == null ? other.getUserTelphone() == null : this.getUserTelphone().equals(other.getUserTelphone()))
-            && (this.getUserQq() == null ? other.getUserQq() == null : this.getUserQq().equals(other.getUserQq()))
-            && (this.getUserBirthday() == null ? other.getUserBirthday() == null : this.getUserBirthday().equals(other.getUserBirthday()))
-            && (this.getUserRegistertime() == null ? other.getUserRegistertime() == null : this.getUserRegistertime().equals(other.getUserRegistertime()))
-            && (this.getUserPictureurl() == null ? other.getUserPictureurl() == null : this.getUserPictureurl().equals(other.getUserPictureurl()));
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
-        result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
-        result = prime * result + ((getUserPassword() == null) ? 0 : getUserPassword().hashCode());
-        result = prime * result + ((getUserEmail() == null) ? 0 : getUserEmail().hashCode());
-        result = prime * result + ((getUserTelphone() == null) ? 0 : getUserTelphone().hashCode());
-        result = prime * result + ((getUserQq() == null) ? 0 : getUserQq().hashCode());
-        result = prime * result + ((getUserBirthday() == null) ? 0 : getUserBirthday().hashCode());
-        result = prime * result + ((getUserRegistertime() == null) ? 0 : getUserRegistertime().hashCode());
-        result = prime * result + ((getUserPictureurl() == null) ? 0 : getUserPictureurl().hashCode());
-        return result;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", userId=").append(userId);
-        sb.append(", userName=").append(userName);
-        sb.append(", userPassword=").append(userPassword);
-        sb.append(", userEmail=").append(userEmail);
-        sb.append(", userTelphone=").append(userTelphone);
-        sb.append(", userQq=").append(userQq);
-        sb.append(", userBirthday=").append(userBirthday);
-        sb.append(", userRegistertime=").append(userRegistertime);
-        sb.append(", userPictureurl=").append(userPictureurl);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", phone='" + phone + '\'' +
+                ", realName='" + realName + '\'' +
+                ", sex='" + sex + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
