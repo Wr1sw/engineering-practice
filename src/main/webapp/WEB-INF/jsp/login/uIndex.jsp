@@ -1,3 +1,4 @@
+<%@ page import="com.cuit.utils.StringUtils" %>
 <%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
  <%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE html>
@@ -94,78 +95,15 @@
                     <c:forEach items="${ms}" var="data" varStatus="l">
                         <div class="seckill-item">
                             <div class="seckill-item-img">
-                                <a href="${ctx}/item/view?id=${data.id}"><img src="${ctx}${data.url1}"></a>
+                                <a href="${ctx}/Item/view?id=${data.id}"><img src="${ctx}${data.url1}"></a>
                             </div>
                             <div class="seckill-item-info">
+                                    <%--此处需要后期修改为${data.ms}--%>
                                 <p>${data.name}</p>
                                 <p><i class="fa fa-rmb text-danger"></i><span class="seckill-price text-danger">${data.price}</span></p>
                             </div>
                         </div>
                     </c:forEach>
-
-                    <%--<div class="seckill-item">
-                        <div class="seckill-item-img">
-                            <a href="${pageContext.request.contextPath}/Trail/item_detail"><img src="${ctx}/static/images/seckill-item1.jpg"></a>
-                        </div>
-                        <div class="seckill-item-info">
-                            <p>华为Mate40pro手机壳游戏人生mate40pro+保护套可定制</p>
-                            <p><i class="fa fa-rmb text-danger"></i><span class="seckill-price text-danger">45.0</span></p>
-                        </div>
-                    </div>
-                    <div class="seckill-item">
-                        <div class="seckill-item-img">
-                            <a href="#"><img src="${pageContext.request.contextPath}/static/images/seckill-item2.jpg"></a>
-                        </div>
-                        <div class="seckill-item-info">
-                            <p>ipad mini 全新升级版6英寸护眼非反光电子墨水</p>
-                            <p><i class="fa fa-rmb text-danger"></i><span class="seckill-price text-danger">2989.0</span></p>
-                        </div>
-                    </div>
-                    <div class="seckill-item">
-                        <div class="seckill-item-img">
-                            <a href="#"><img src="${pageContext.request.contextPath}/static/images/seckill-item3.jpg"></a>
-                        </div>
-                        <div class="seckill-item-info">
-                            <p>粮悦 大吃兄糯米锅巴 安徽特产锅巴糯米原味400g*2盒</p>
-                            <p><i class="fa fa-rmb text-danger"></i><span class="seckill-price text-danger">21.8</span></p>
-                        </div>
-                    </div>
-                    <div class="seckill-item">
-                        <div class="seckill-item-img">
-                            <a href="#"><img src="${pageContext.request.contextPath}/static/images/seckill-item4.jpg"></a>
-                        </div>
-                        <div class="seckill-item-info">
-                            <p>[京东超市] 清风（APP）抽纸 原木纯品金装系列 3层</p>
-                            <p><i class="fa fa-rmb text-danger"></i><span class="seckill-price text-danger">49.9</span></p>
-                        </div>
-                    </div>
-                    <div class="seckill-item">
-                        <div class="seckill-item-img">
-                            <a href="#"><img src="${pageContext.request.contextPath}/static/images/seckill-item5.jpg"></a>
-                        </div>
-                        <div class="seckill-item-info">
-                            <p>NIKE耐克 男子休闲鞋 AIR MAX 90 ESSENTIAL 气垫</p>
-                            <p><i class="fa fa-rmb text-danger"></i><span class="seckill-price text-danger">559</span></p>
-                        </div>
-                    </div>
-                    <div class="seckill-item">
-                        <div class="seckill-item-img">
-                            <a href="#"><img src="${pageContext.request.contextPath}/static/images/seckill-item6.png"></a>
-                        </div>
-                        <div class="seckill-item-info">
-                            <p>徐福记 小叭叭 米格玛糙米卷 能量棒 粗粮谷物夹心米果卷</p>
-                            <p><i class="fa fa-rmb text-danger"></i><span class="seckill-price text-danger">18.9</span></p>
-                        </div>
-                    </div>
-                    <div class="seckill-item">
-                        <div class="seckill-item-img">
-                            <a href="#"><img src="${pageContext.request.contextPath}/static/images/seckill-item8.png"></a>
-                        </div>
-                        <div class="seckill-item-info">
-                            <p>金龙鱼 东北大米 5kg 乳玉皇妃稻香贡米 大米十斤</p>
-                            <p><i class="fa fa-rmb text-danger"></i><span class="seckill-price text-danger">99.8</span></p>
-                        </div>
-                    </div>--%>
                 </div>
             </div>
             <!-- 电脑专场 -->
@@ -179,93 +117,115 @@
                 <div class="item-class-content">
                     <div class="item-content-top">
                         <div class="item-big-img">
-                            <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-1.jpg"></a>
+                            <img src="${ctx}${rxItem1.url1}">
                         </div>
                         <div class="item-four-img">
-                            <div class="item-four-detail">
-                                <div class="item-four-detail-text">
-                                    <p class="pt_bi_tit">电脑馆</p>
-                                    <p class="pt_bi_promo">笔记本9999元限量秒！</p>
+                            <c:forEach items="${rxItemsLeft}" var="item" varStatus="l">
+                                <div class="item-four-detail">
+                                    <div class="item-four-detail-text">
+                                        <p class="pt_bi_tit">${item.categoryIdOne}</p>
+                                        <p class="pt_bi_promo">${item.categoryIdTwo}</p>
+                                    </div>
+                                    <div class="item-four-detail-img">
+                                        <img src="${ctx}${item.url1}">
+                                    </div>
                                 </div>
-                                <div class="item-four-detail-img">
-                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2.jpg"></a>
-                                </div>
-                            </div>
-                            <div class="item-four-detail">
-                                <div class="item-four-detail-text">
-                                    <p class="pt_bi_tit">外设装备</p>
-                                    <p class="pt_bi_promo">1000减618</p>
-                                </div>
-                                <div class="item-four-detail-img">
-                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-1-3.jpg"></a>
-                                </div>
-                            </div>
-                            <div class="item-four-detail">
-                                <div class="item-four-detail-text">
-                                    <p class="pt_bi_tit">电脑配件</p>
-                                    <p class="pt_bi_promo">联合满减<br>最高省618</p>
-                                </div>
-                                <div class="item-four-detail-img">
-                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-1-4%20.jpg"></a>
-                                </div>
-                            </div>
-                            <div class="item-four-detail">
-                                <div class="item-four-detail-text">
-                                    <p class="pt_bi_tit">办公生活</p>
-                                    <p class="pt_bi_promo">5折神券 精品文具</p>
-                                </div>
-                                <div class="item-four-detail-img">
-                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-1-5.jpg" alt=""></a>
-                                </div>
-                            </div>
+                            </c:forEach>
+<%--                            <div class="item-four-detail">--%>
+<%--                                <div class="item-four-detail-text">--%>
+<%--                                    <p class="pt_bi_tit">外设装备</p>--%>
+<%--                                    <p class="pt_bi_promo">1000减618</p>--%>
+<%--                                </div>--%>
+<%--                                <div class="item-four-detail-img">--%>
+<%--                                    <img src="${ctx}/static/images/item-computer-1-3.jpg">--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="item-four-detail">--%>
+<%--                                <div class="item-four-detail-text">--%>
+<%--                                    <p class="pt_bi_tit">电脑配件</p>--%>
+<%--                                    <p class="pt_bi_promo">联合满减<br>最高省618</p>--%>
+<%--                                </div>--%>
+<%--                                <div class="item-four-detail-img">--%>
+<%--                                    <img src="${ctx}/static/images/item-computer-1-4%20.jpg">--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="item-four-detail">--%>
+<%--                                <div class="item-four-detail-text">--%>
+<%--                                    <p class="pt_bi_tit">办公生活</p>--%>
+<%--                                    <p class="pt_bi_promo">5折神券 精品文具</p>--%>
+<%--                                </div>--%>
+<%--                                <div class="item-four-detail-img">--%>
+<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-1-5.jpg" alt=""></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="item-four-detail">--%>
+<%--                                <div class="item-four-detail-text">--%>
+<%--                                    <p class="pt_bi_tit">办公生活</p>--%>
+<%--                                    <p class="pt_bi_promo">5折神券 精品文具</p>--%>
+<%--                                </div>--%>
+<%--                                <div class="item-four-detail-img">--%>
+<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-1-5.jpg" alt=""></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
                         </div>
-                    </div>
+                       </div>
                 </div>
                 <div class="item-class-content">
                     <div class="item-content-top">
                         <div class="item-big-img">
-                            <img src="${pageContext.request.contextPath}/static/images/item-computer-2-1.jpg" alt="">
+                            <img src="${ctx}${rxItem2.url1}" alt="">
                         </div>
                         <div class="item-four-img">
-                            <div class="item-four-detail">
-                                <div class="item-four-detail-text">
-                                    <p class="pt_bi_tit">笔记本电脑</p>
-                                    <p class="pt_bi_promo">爆款12期免息</p>
+                            <c:forEach items="${rxItemsRight}" var="item" varStatus="l">
+                                <div class="item-four-detail">
+                                    <div class="item-four-detail-text">
+                                        <p class="pt_bi_tit">${item.categoryIdOne}</p>
+                                        <p class="pt_bi_promo">${item.categoryIdTwo}</p>
+                                    </div>
+                                    <div class="item-four-detail-img">
+                                        <img src="${ctx}${item.url1}">
+                                    </div>
                                 </div>
-                                <div class="item-four-detail-img">
-                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-2.jpg" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="item-four-detail">
-                                <div class="item-four-detail-text">
-                                    <p class="pt_bi_tit">智能酷玩</p>
-                                    <p class="pt_bi_promo">抢999减666神券</p>
-                                </div>
-                                <div class="item-four-detail-img">
-                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-3.jpg" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="item-four-detail">
-                                <div class="item-four-detail-text">
-                                    <p class="pt_bi_tit">娱乐影音</p>
-                                    <p class="pt_bi_promo">大牌耳机低至5折</p>
-                                </div>
-                                <div class="item-four-detail-img">
-                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-4.jpg" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="item-four-detail">
-                                <div class="item-four-detail-text">
-                                    <p class="pt_bi_tit">摄影摄像</p>
-                                    <p class="pt_bi_promo">大牌相机5折抢</p>
-                                </div>
-                                <div class="item-four-detail-img">
-                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-5.jpg" alt=""></a>
-                                </div>
-                            </div>
+                            </c:forEach>
+<%--                            <div class="item-four-detail">--%>
+<%--                                <div class="item-four-detail-text">--%>
+<%--                                    <p class="pt_bi_tit">笔记本电脑</p>--%>
+<%--                                    <p class="pt_bi_promo">爆款12期免息</p>--%>
+<%--                                </div>--%>
+<%--                                <div class="item-four-detail-img">--%>
+<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-2.jpg" alt=""></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="item-four-detail">--%>
+<%--                                <div class="item-four-detail-text">--%>
+<%--                                    <p class="pt_bi_tit">智能酷玩</p>--%>
+<%--                                    <p class="pt_bi_promo">抢999减666神券</p>--%>
+<%--                                </div>--%>
+<%--                                <div class="item-four-detail-img">--%>
+<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-3.jpg" alt=""></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="item-four-detail">--%>
+<%--                                <div class="item-four-detail-text">--%>
+<%--                                    <p class="pt_bi_tit">娱乐影音</p>--%>
+<%--                                    <p class="pt_bi_promo">大牌耳机低至5折</p>--%>
+<%--                                </div>--%>
+<%--                                <div class="item-four-detail-img">--%>
+<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-4.jpg" alt=""></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="item-four-detail">--%>
+<%--                                <div class="item-four-detail-text">--%>
+<%--                                    <p class="pt_bi_tit">摄影摄像</p>--%>
+<%--                                    <p class="pt_bi_promo">大牌相机5折抢</p>--%>
+<%--                                </div>--%>
+<%--                                <div class="item-four-detail-img">--%>
+<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-5.jpg" alt=""></a>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
                         </div>
                     </div>
-                </div>
+               </div>
             </div>
         </div>
     </div>

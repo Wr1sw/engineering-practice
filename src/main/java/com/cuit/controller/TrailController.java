@@ -24,6 +24,10 @@ public class TrailController {
     }
     @RequestMapping("/item_detail")
     public String ShowdetailPage() {
-        return "item_detail";
+        return "item/item_detail";
+    }
+    @RequestMapping("/shopCar")
+    public String shopCar() {
+        return "shopCar";
     }
 }

@@ -6,6 +6,7 @@ import com.cuit.service.ItemService;
 import com.cuit.service.ManageService;
 import com.cuit.service.UserService;
 import com.cuit.utils.Consts;
+import com.cuit.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,17 @@ public class LoginController {
 
     @Autowired
     private ItemService itemService;
+
+    @Autowired
+    private StringUtils stringUtils;
+
+    /**
+     * Create by Miracle
+     * function  通过set方法注入StringUtils
+     * @param stringUtils
+     */
+    public void setStringUtils(StringUtils stringUtils) {
+    }
 
     /**
      * 管理员登录前
@@ -72,6 +84,7 @@ public class LoginController {
     /**
      * 前端首页
      * by wr1sw
+     * Recreate by miracle: to finish the 热销商品10个
      */
     @RequestMapping("/uIndex")
     public String uIndex(Model model, Item item, HttpServletRequest request) {
@@ -90,13 +103,28 @@ public class LoginController {
             }
         }
         /*取7个限时秒杀商品*/
-        List<Item> msItems = itemService.listBySqlReturnEntity("select * from item where isDelete=0 and zk is not null order by zk desc limit 0,7");
+        String s = "select * from item where isDelete=0 and zk is not null order by zk desc limit 0,7";
+        List<Item> msItems = (List<Item>) stringUtils.SubString(itemService.listBySqlReturnEntity(s),0,22,24);
         model.addAttribute("ms",msItems);
-        System.out.println(msItems);
         /*热销商品10个*/
-        List<Item> rxItems = itemService.listBySqlReturnEntity("select * from item where isDelete=0 order by gmNum desc limit 0,10");
-        model.addAttribute("rx",rxItems);
-        System.out.println(rxItems);
+        /*热销第一名*/
+        String s1 = "select * from item where isDelete=0 and category_id_one=16 order by gmNum desc limit 1";
+        Item rxItem1 = itemService.getBySqlReturnEntity(s1);
+        /*热销第二名*/
+        String s2 = "select * from item where isDelete=0 and category_id_one=16 order by gmNum desc limit 1,1";
+        Item rxItem2 = itemService.getBySqlReturnEntity(s2);
+        /*热销第3-6名*/
+        String s3 = "select * from item where isDelete=0 and category_id_one=16 order by gmNum desc limit 2,4";
+        List<Item> rxItemsLeft = itemService.listBySqlReturnEntity(s3);
+        /*热销第7-10名*/
+        String s4 = "select * from item where isDelete=0 and category_id_one=16 order by gmNum desc limit 6,4";
+        List<Item> rxItemsRight = itemService.listBySqlReturnEntity(s4);
+
+        model.addAttribute("rxItemsLeft",rxItemsLeft);
+        model.addAttribute("rxItemsRight",rxItemsRight);
+        model.addAttribute("rxItem1",rxItem1);
+        model.addAttribute("rxItem2",rxItem2);
+        System.out.println(rxItemsLeft);
         return "login/uIndex";
     }
     /**
@@ -156,4 +184,6 @@ public class LoginController {
         session.invalidate();//清空session
         return "redirect:/login/uIndex";
     }
+
+
 }

@@ -7,9 +7,19 @@
 
     <!--扫描service下的包-->
     <context:component-scan base-package="com.cuit.service"/>
+    <!--  create by Miracle   给LoginController注入StringUtils-->
+    <bean id="loginController" class="com.cuit.controller.LoginController">
+        <property name="stringUtils" ref="stringUtils"/>
+    </bean>
+
+    <!--  create by Miracle   给ItemController注入StringUtils-->
+<!--    <bean id="itemController" class="com.cuit.controller.ItemController">-->
+<!--        <property name="stringUtils" ref="stringUtils"/>-->
+<!--    </bean>-->
+
+    <bean id ="stringUtils" class="com.cuit.utils.StringUtils"/>
 
     <!--将我们的所有业务类注入到spring，可以通过配置或者注解-->
-
 
     <!--声明式事务-->
     <bean id="TransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

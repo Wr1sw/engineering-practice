@@ -104,7 +104,6 @@ public interface BaseDao<T>{
     //=======================一下是分页方法================================
     /**
      * 默认 sqlId find是分页
-     * @param sqlId
      * @param params
      * @return
      */
@@ -119,7 +118,6 @@ public interface BaseDao<T>{
     public List<T> findByEntity(T entity);
     /**
      * 需要自己写count的分页
-     * @param sqlId
      * @param params
      * @return
      */
