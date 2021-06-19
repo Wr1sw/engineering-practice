@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,20 +85,20 @@
         <p>登陆</p>
     </div>
     <div class="form-body">
-        <form action="#">
+        <form action=${ctx}/login/uLoginTo method="post">
             <div class="form-group">
                 <label >用户名:</label>
-                <input type="text" class="form-input" name="username">
+                <input type="text" class="form-input" name="userName">
             </div>
 
             <div class="form-group">
                 <label >密&nbsp;&nbsp;&nbsp;码:</label>
-                <input type="password" class="form-input" name="password">
+                <input type="password" class="form-input" name="passWord">
             </div>
 
             <div class="btn">
-                <a href="Trail.jsp"><button class="form-btn form-btn-primary " type="submit">登录</button></a>
-                <a href="signup.jsp"><button class="form-btn form-btn-warning " type="submit">注册</button></a>
+                <a href="../Trail.jsp"><button class="form-btn form-btn-primary " type="submit">登录</button></a>
+                <a href="../signup.jsp"><button class="form-btn form-btn-warning " type="submit">注册</button></a>
             </div>
         </form>
     </div>
@@ -105,13 +106,13 @@
 </body>
 <script>
     $('form').submit(function () {
-        var username = $('input[name=username]').val();
-        var password = $('input[name=password]').val();
-        if (username.length == 0) {
+        var userName = $('input[name=userName]').val();
+        var passWord = $('input[name=passWord]').val();
+        if (userName.length == 0) {
             alert("用户名不能为空");
             return false;
         }
-        if (password.length == 0) {
+        if (passWord.length == 0) {
             alert("密码为空");
             return false;
         }
