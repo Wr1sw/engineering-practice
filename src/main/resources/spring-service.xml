@@ -10,9 +10,6 @@
 
     <!--将我们的所有业务类注入到spring，可以通过配置或者注解-->
 
-    <bean id="UserServiceImpl" class="com.cuit.service.UserServiceImpl">
-        <property name="userMapper" ref="userMapper"/>
-    </bean>
 
     <!--声明式事务-->
     <bean id="TransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
