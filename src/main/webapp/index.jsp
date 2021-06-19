@@ -12,7 +12,7 @@
 </head>
 <body>
     <h3>
-        <a href="${pageContext.request.contextPath}/Trail/">点击进入商城首页</a>
+        <a href="${pageContext.request.contextPath}/login/uIndex/">点击进入商城首页</a>
     </h3>
 </body>
 </html>

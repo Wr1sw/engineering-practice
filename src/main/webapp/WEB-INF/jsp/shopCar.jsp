@@ -18,7 +18,7 @@
         <div class="input-group">
             <input type="text" class="form-control" placeholder="输入你想要的商品">
             <span class="input-group-btn">
-			        <a href="search.jsp"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
+			        <a href="item/search.jsp"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
 			      </span>
         </div>
         <div class="search-keyword">
