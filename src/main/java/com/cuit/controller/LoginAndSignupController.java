@@ -9,11 +9,11 @@ public class LoginAndSignupController {
 
     @RequestMapping("/signup")
     public String showSignupPage() {
-        return "signup";
+        return "login/res";
     }
 
-    @RequestMapping("/login")
-    public String showLoginPage () {
-        return "login";
-    }
+//    @RequestMapping("/login")
+//    public String showLoginPage () {
+//        return "login/Mlogin";
+//    }
 }

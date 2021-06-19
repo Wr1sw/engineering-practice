@@ -1,13 +1,9 @@
 package com.cuit.controller;
 
 
-import com.cuit.pojo.User;
 import com.cuit.service.UserService;
-import com.cuit.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TrailController {
 
     @Autowired
-    @Qualifier("UserServiceImpl")
     private UserService userService;
 
     @RequestMapping("")
@@ -25,7 +20,7 @@ public class TrailController {
 
     @RequestMapping("/search")
     public String ShowSearchPage() {
-        return "search";
+        return "item/search";
     }
     @RequestMapping("/item_detail")
     public String ShowdetailPage() {

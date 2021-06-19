@@ -3,8 +3,6 @@ package com.cuit.controller;
 
 import com.cuit.pojo.User;
 import com.cuit.service.UserService;
-import com.cuit.service.UserServiceImpl;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,7 +15,6 @@ import java.util.List;
 public class UserCenterController {
 
     @Autowired
-    @Qualifier("UserServiceImpl")
     private UserService userService;
 
 
@@ -25,12 +22,12 @@ public class UserCenterController {
         return "UserInfo/User";
     }
 
-    @RequestMapping("/testUsers")
+   /* @RequestMapping("/testUsers")*/
 
-    @ResponseBody
+   /* @ResponseBody
     public List<User> test() {
         List<User> users = userService.selectAllUsers();
         System.out.println(users);
         return users;
-    }
+    }*/
 }
