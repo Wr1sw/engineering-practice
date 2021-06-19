@@ -17,9 +17,9 @@ public class MyTest {
     private UserService userService;
     @Test
     public void test1 () {
-        List<User> users = userService.selectAllUsers();
+      /*  List<User> users = userService.deleteBySql("select * from ");
         for (User user : users) {
             System.out.println(user);
-        }
+        }*/
     }
 }
