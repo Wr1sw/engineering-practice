@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
+<%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,14 +13,14 @@
 </head>
 <body>
 <!--顶部导航栏-->
-<%@include file="Head.jsp"%>
+<%@include file="../Head.jsp"%>
 <!-- 搜索框 -->
 <div class="search">
     <div class="search-body">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="输入你想要的商品">
+            <input type="text" class="form-control" placeholder="手机壳">
             <span class="input-group-btn">
-			        <a href="search.jsp"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
+			        <a href="${pageContext.request.contextPath}/Trail/search"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
 			      </span>
         </div>
         <div class="search-keyword">
@@ -32,17 +33,17 @@
     <div class="search-nav-container">
         <ul>
             <li>搜索发现</li>
-            <li><a href="Trail.jsp">首页</a></li>
-            <li><a href="Trail.jsp">服装城</a></li>
-            <li><a href="Trail.jsp">美妆馆</a></li>
-            <li><a href="Trail.jsp">生鲜</a></li>
+            <li><a href="${ctx}/login/uIndex">首页</a></li>
+            <li><a href="${ctx}/login/uIndex">服装城</a></li>
+            <li><a href="${ctx}/login/uIndex">美妆馆</a></li>
+            <li><a href="${ctx}/login/uIndex">生鲜</a></li>
         </ul>
     </div>
 </div>
 <div class="container-full">
     <div class="host-location">
         全部结果 >
-        <span class="host-location-text">手机壳</span>
+        <span class="host-location-text">${condition}</span>
     </div>
     <div class="item-class-show">
         <div class="item-class-group item-class-group-top">
@@ -50,6 +51,9 @@
                 <span>品牌</span>
             </div>
             <div class="item-class-select">
+                <%--<c:forEach items="${pagers.datas}" var="data" varStatus="l">
+                    <span>${data.categoryIdTwo}</span>
+                </c:forEach>--%>
                 <span>OPPO</span>
                 <span>莫凡（Mofi）</span>
                 <span>华为（HUAWEI）</span>
@@ -269,27 +273,30 @@
             </div>
             <div class="item-container"><!--右侧商品开始-->
                 <div class="item-row">
-                    <div class="item-show-info">
-                        <div>
-                            <img src="../static/images/row-1.jpg" alt="">
-                        </div>
-                        <div class="item-show-price">
+                    <c:forEach items="${pagers.datas}" var="data" varStatus="l">
+                        <div class="item-show-info">
+                            <div>
+                                <img src="${ctx}${data.url1}" alt="">
+                            </div>
+                            <div class="item-show-price">
                                 <span>
                                     <i class="fa fa-rmb text-danger"></i>
-                                    <span class="seckill-price text-danger">178.00</span>
+                                    <span class="seckill-price text-danger">${data.price}</span>
                                 </span>
+                            </div>
+                            <div class="item-show-detail">
+                                <span>${data.name}</span>
+                            </div>
+                            <div class="item-show-num">
+                                已有 <span>${data.gmNum}</span>人评价
+                            </div>
+                            <div class="item-show-seller">
+                                <span>测试旗舰店</span>
+                            </div>
                         </div>
-                        <div class="item-show-detail">
-                            <span>RICHMOND & FINCH苹果手机壳<br>iphone11Pro明星同款ins手机保护套硅胶</span>
-                        </div>
-                        <div class="item-show-num">
-                            已有 <span>5000+</span>人评价
-                        </div>
-                        <div class="item-show-seller">
-                            <span>RICHMOND & FINCH旗舰店</span>
-                        </div>
-                    </div>
-                    <div class="item-show-info">
+                    </c:forEach>
+
+                   <%-- <div class="item-show-info">
                         <div>
                             <img src="../static/images/row-2.jpg">
                         </div>
@@ -348,10 +355,11 @@
                         <div class="item-show-seller">
                             <span>品胜旗舰店</span>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
-            <div class="item-container"><!--右侧商品开始-->
+
+           <%-- <div class="item-container"><!--右侧商品开始-->
                 <div class="item-row">
                     <div class="item-show-info">
                         <div>
@@ -602,7 +610,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </div>
 </div>
@@ -648,6 +656,6 @@
     </nav>
 </div>
 <div class="clearfix"></div>
-<%@include file="Footer.jsp"%>
+<%@include file="../Footer.jsp"%>
 </body>
 </html>
