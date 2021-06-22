@@ -142,9 +142,6 @@ public class LoginController {
      */
     @RequestMapping("/toRes")
     public String toRes(User u) {
-        System.out.println("+++++++++++++++++++++++++");
-        System.out.println(u);
-        System.out.println("+++++++++++++++++++++++++");
         userService.insert(u);
         return "uLogin";
     }
