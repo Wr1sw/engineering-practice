@@ -91,7 +91,7 @@
                 <div class="seckill-content">
                     <div class="seckill-item">
                         <div class="seckill-item-img">
-                            <a href="${pageContext.request.contextPath}/Trail/item_detail"><img src="../static/images/seckill-item1.jpg"></a>
+                            <a href="${pageContext.request.contextPath}/Trail/item_detail"><img src="${pageContext.request.contextPath}/static/images/seckill-item1.jpg"></a>
                         </div>
                         <div class="seckill-item-info">
                             <p>华为Mate40pro手机壳游戏人生mate40pro+保护套可定制</p>
