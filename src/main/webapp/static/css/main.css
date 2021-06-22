@@ -45,7 +45,16 @@
     padding:20px;
     position:relative;}
 .shop_product img{
-    margin-left:10px;}
+    width: 100%;
+    margin-left:10px;
+}
+.auto-img {
+    width:80px;
+    height: 80px;
+}
+.auto-img img{
+    width: 100%;
+}
 .fl{float:left;}
 .shoppro_des{
     height:80px;
