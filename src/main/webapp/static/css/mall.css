@@ -197,6 +197,38 @@
 		float: left;
 	}
 
+	.detail-item-panel{
+		width:825px;
+		height: 485px;
+		background-color: #fff;
+		position: absolute;
+		display: none;
+		z-index: 999;
+	}
+
+	.detail-item-title{
+		padding-right: 6px;
+		font-weight: bold;
+		font-size: 12px;
+		cursor: pointer;
+		color: #555555;
+	}
+
+	.detail-item-title:hover{
+		color: #D9534F;
+	}
+
+	.detail-item{
+		font-size: 14px;
+		padding-left: 12px;
+		padding-right: 8px;
+		cursor: pointer;
+		border-left: 1px solid #ccc;
+	}
+
+	.detail-item:hover{
+		color: #D9534F;
+	}
 /*****************************幻灯片开始*****************************/
 	.slide{
 		width: 790px;
@@ -273,10 +305,7 @@
 		background-color: #fff;
 	}
 	.seckill-item-img img{
-		width: 130px;
-		height: 130px;
-		margin-left: 15px;
-		margin-top: 15px;
+		width: 100%;
 	}
 	.seckill-item-info{
 		padding: 5px;

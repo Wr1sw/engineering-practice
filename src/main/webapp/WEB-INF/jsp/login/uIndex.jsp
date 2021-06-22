@@ -55,13 +55,20 @@
                 <ul>
                     <c:forEach items="${lbs}" var="data" varStatus="l">
                         <li><span class="nav-side-item">${data.father.name}</span> / <span class="nav-side-item">${data.father.name} / </span><span class="nav-side-item">${data.father.name}</span></li>
-                           <%-- <c:forEach items="${data.childrens}" var="child" varStatus="ll">
-                                 <div class="detail-item-panel" style="height: 100px;width: 50px">
-                                    <div class="nav-detail-item">
-                                        <span><a href="${ctx}/Item/shoplist?categoryIdTwo=${child.id}">${child.name}</a></span>
-                                    </div>
-                                </div>
-                            </c:forEach>--%>
+                            <div class="detail-item-panel" >
+                                <ul>
+                                <c:forEach items="${lbs}" var="data" varStatus="l">
+                                    <li>
+                                        <span class="detail-item-title">${data.father.name}</span>
+                                    <c:forEach items="${data.childrens}" var="child" varStatus="ll">
+<%--                                        <div class="detail-item-panel panel-1">--%>
+                                            <span class="detail-item"><a href="${ctx}/Item/shoplist?categoryIdTwo=${child.id}">${child.name}</a></span>
+<%--                                        </div>--%>
+                                    </c:forEach>
+                                    </li>
+                                </c:forEach>
+                                </ul>
+                             </div>
                     </c:forEach>
                 </ul>
             </div>

@@ -115,16 +115,16 @@ function PrevNextClick(flag){
 
 
 //显示商品详细信息
-$('.nav-side li, .detail-item-panel').hover(
+$('.nav-side ul, .detail-item-panel').hover(
 	function(){
-		 let slideOffset = $('.nav-side').offset();
-		$('.panel').show();
-		$('.detail-item-panel').css("top",(slideOffset.top + 500)+"px");
-		$('.detail-item-panel').css("left",(slideOffset.left + 200) + "px");
+		var slideOffset = $('.nav-side').offset();
+		$('.detail-item-panel').show();
+		$('.detail-item-panel').css("top",(slideOffset.top )+"px");
+		$('.detail-item-panel').css("left",(slideOffset.left + 270) + "px");
 	/*	$('.nav-detail-item').css("top",slideOffset.top + "px");
 		$('.nav-detail-item').css("left",(slideOffset.left + 200) + "px");*/
 	},function () {
-		$('.panel').hide();
+		$('.detail-item-panel').hide();
 });
 
 //倒计时
