@@ -165,8 +165,8 @@ public class LoginController {
             return "redirect:/login/res";
         }else{
             request.getSession().setAttribute("role", 2);
-            request.getSession().setAttribute("userName", byEntity.getUserName());
-            request.getSession().setAttribute("userId", byEntity.getId());
+            request.getSession().setAttribute(Consts.USERNAME, byEntity.getUserName());
+            request.getSession().setAttribute(Consts.USERID, byEntity.getId());
             return "redirect:/login/uIndex";
         }
     }
@@ -182,5 +182,11 @@ public class LoginController {
         return "redirect:/login/uIndex";
     }
 
+    /**
+     * 修改密码页面
+     */
 
+    /**
+     * 执行修改密码
+     */
 }
