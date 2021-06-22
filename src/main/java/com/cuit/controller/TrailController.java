@@ -28,6 +28,6 @@ public class TrailController {
     }
     @RequestMapping("/shopCar")
     public String shopCar() {
-        return "shopCar";
+        return "car/shopCar";
     }
 }
