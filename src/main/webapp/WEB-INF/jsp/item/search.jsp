@@ -274,26 +274,28 @@
             <div class="item-container"><!--右侧商品开始-->
                 <div class="item-row">
                     <c:forEach items="${pagers.datas}" var="data" varStatus="l">
-                        <div class="item-show-info">
-                            <div>
-                                <img src="${ctx}${data.url1}" alt="">
-                            </div>
-                            <div class="item-show-price">
+                        <a href="${ctx}/Item/view?id=${data.id}">
+                            <div class="item-show-info">
+                                <div>
+                                    <img src="${ctx}${data.url1}" alt="">
+                                </div>
+                                <div class="item-show-price">
                                 <span>
                                     <i class="fa fa-rmb text-danger"></i>
                                     <span class="seckill-price text-danger">${data.price}</span>
                                 </span>
+                                </div>
+                                <div class="item-show-detail">
+                                    <span>${data.name}</span>
+                                </div>
+                                <div class="item-show-num">
+                                    已有 <span>${data.gmNum}</span>人评价
+                                </div>
+                                <div class="item-show-seller">
+                                    <span>测试旗舰店</span>
+                                </div>
                             </div>
-                            <div class="item-show-detail">
-                                <span>${data.name}</span>
-                            </div>
-                            <div class="item-show-num">
-                                已有 <span>${data.gmNum}</span>人评价
-                            </div>
-                            <div class="item-show-seller">
-                                <span>测试旗舰店</span>
-                            </div>
-                        </div>
+                        </a>
                     </c:forEach>
         </div>
     </div>
