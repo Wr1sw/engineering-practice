@@ -9,8 +9,8 @@
     <title>商品详情</title>
     <link rel="stylesheet" type="text/css" href="${ctx}/static/css/bootstrap.css">
     <link rel="stylesheet" href="${ctx}/static/css/font-awesome.css">
-
     <link rel="stylesheet" href="${ctx}/static/css/mall.css">
+    <script src="${ctx}/static/js/jquery.js"></script>
 </head>
 <body>
     <!--  顶部导航  -->
@@ -190,8 +190,8 @@
             </div>
 
             <div class="add-buy-car-box">
-                <button class="btn-add-buy-car btn btn-danger">
-                    <a href="${ctx}/Trail/shopCar" class="">加入购物车</a>
+                <button class="btn-add-buy-car btn btn-danger" onclick="addCar(${item.id})">
+                    <a href="#" class="">加入购物车</a>
                 </button>
             </div>
         </div>
@@ -199,4 +199,21 @@
     <!--底部-->
     <%@include file="../Footer.jsp"%>
 </body>
+<script>
+    function addCar(id) {
+        $.ajax({
+           type:"POST",
+           url:"${ctx}/car/Add?itemId=${item.id}&num=1",
+            success:function (result) {
+                var r = JSON.parse(result);
+                if(r.res===0){
+                    alert("请登录")
+                    window.location.href="${ctx}/login/uLogin";
+                }else{
+                    window.location.href="${ctx}/car/findBySql";
+                }
+            }
+        });
+    }
+</script>
 </html>
