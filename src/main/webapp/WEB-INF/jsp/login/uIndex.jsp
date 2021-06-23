@@ -106,7 +106,9 @@
                             </div>
                             <div class="seckill-item-info">
                                     <%--此处需要后期修改为${data.ms}--%>
-                                <p>${data.name}</p>
+                                <p>${data.ms}</p>
+                            </div>
+                            <div class="seckill-item-info1">
                                 <p><i class="fa fa-rmb text-danger"></i><span class="seckill-price text-danger">${data.price}</span></p>
                             </div>
                         </div>

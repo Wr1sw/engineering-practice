@@ -59,9 +59,9 @@
     <div class="shop_box comWidth">
             <div class="shop_product">
                 <input type="checkbox" name="allcheck" value="allcheck" class="fl"/>
-                <div class="auto-img">
-                    <img src="${ctx}${data.item.url1}" alt="" class="fl"/>
-                </div>
+
+                <img src="${ctx}${data.item.url1}" alt="" class="fl" width="90" height="90"/>
+
                 <div class="shoppro_des bh fl"> ${data.item.name}</div>
                 <div class="shoppro_price fr"> <span class="bh">已入收藏夹</span><br />
                     <span class="bh">删除</span> </div>
