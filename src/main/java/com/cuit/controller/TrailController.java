@@ -30,4 +30,9 @@ public class TrailController {
     public String shopCar() {
         return "car/shopCar";
     }
+
+    @RequestMapping("/viewUser")
+    public String viewUser() {
+        return "user/view";
+    }
 }
