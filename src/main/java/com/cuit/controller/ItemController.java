@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/Item")
 public class ItemController extends BaseController {
@@ -31,18 +33,22 @@ public class ItemController extends BaseController {
     }
 
     /**
+     * Modified by Miracle
      * 按照关键字或者二级分类查询
      */
     @RequestMapping("/shoplist")
     public String shoplist(Item item, String condition, Model model) {
         String sql = "select * from item where isDelete=0";
+        String sqlForAds = "select * from item where isDelete=0 and zk is not null order by gmNum desc limit 6";
         if(!isEmpty(item.getCategoryIdTwo())) sql+="  and category_id_two=" + item.getCategoryIdTwo();
         if(!isEmpty(condition)) {
             sql+= " and name like '%" + condition + "%'";
             model.addAttribute("condition",condition);
         }
         Pager<Item> pagers = (Pager<Item>) stringUtils.SubString(itemService.findBySqlRerturnEntity(sql),0,32,35);
-//        Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
+        //        Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
+        List<Item> ads = (List<Item>)stringUtils.SubString(itemService.listBySqlReturnEntity(sqlForAds),0,24,27);
+        model.addAttribute("ads",ads);
         model.addAttribute("pagers",pagers);
         model.addAttribute("object",item);//传回item
         return "item/search";
