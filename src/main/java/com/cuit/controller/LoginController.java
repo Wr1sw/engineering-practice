@@ -104,20 +104,20 @@ public class LoginController {
         }
         /*取7个限时秒杀商品*/
         String s = "select * from item where isDelete=0 and zk is not null order by zk desc limit 0,7";
-        List<Item> msItems = (List<Item>) stringUtils.SubString(itemService.listBySqlReturnEntity(s),0,22,24);
+        List<Item> msItems = itemService.listBySqlReturnEntity(s);
         model.addAttribute("ms",msItems);
         /*热销商品10个*/
         /*热销第一名*/
-        String s1 = "select * from item where isDelete=0 and category_id_one=16 order by gmNum desc limit 1";
+        String s1 = "select * from item where isDelete=0 and category_id_one=22 order by gmNum desc limit 1";
         Item rxItem1 = itemService.getBySqlReturnEntity(s1);
         /*热销第二名*/
-        String s2 = "select * from item where isDelete=0 and category_id_one=16 order by gmNum desc limit 1,1";
+        String s2 = "select * from item where isDelete=0 and category_id_one=22 order by gmNum desc limit 1,1";
         Item rxItem2 = itemService.getBySqlReturnEntity(s2);
         /*热销第3-6名*/
-        String s3 = "select * from item where isDelete=0 and category_id_one=16 order by gmNum desc limit 2,4";
+        String s3 = "select * from item where isDelete=0 and category_id_one=22 order by gmNum desc limit 2,4";
         List<Item> rxItemsLeft = itemService.listBySqlReturnEntity(s3);
         /*热销第7-10名*/
-        String s4 = "select * from item where isDelete=0 and category_id_one=16 order by gmNum desc limit 6,4";
+        String s4 = "select * from item where isDelete=0 and category_id_one=22 order by gmNum desc limit 6,4";
         List<Item> rxItemsRight = itemService.listBySqlReturnEntity(s4);
 
         model.addAttribute("rxItemsLeft",rxItemsLeft);
