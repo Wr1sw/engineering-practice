@@ -45,9 +45,9 @@ public class ItemController extends BaseController {
             sql+= " and name like '%" + condition + "%'";
             model.addAttribute("condition",condition);
         }
-        Pager<Item> pagers = (Pager<Item>) stringUtils.SubString(itemService.findBySqlRerturnEntity(sql),0,32,35);
+        Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
         //        Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
-        List<Item> ads = (List<Item>)stringUtils.SubString(itemService.listBySqlReturnEntity(sqlForAds),0,24,27);
+        List<Item> ads = itemService.listBySqlReturnEntity(sqlForAds);
         model.addAttribute("ads",ads);
         model.addAttribute("pagers",pagers);
         model.addAttribute("object",item);//传回item
