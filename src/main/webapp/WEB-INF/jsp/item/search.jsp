@@ -291,7 +291,7 @@
                                 </span>
                                 </div>
                                 <div class="item-show-detail">
-                                    <span>${data.name}</span>
+                                    <span>${data.ms}</span>
                                 </div>
                                 <div class="item-show-num">
                                     已有 <span>${data.gmNum}</span>人评价
