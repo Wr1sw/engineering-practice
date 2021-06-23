@@ -121,120 +121,125 @@
                 <span>广告精选</span>
                 <span>广告</span>
             </div>
-            <div class="item-as"><!--商品开始-->
-                <div class="item-as-img"><!--商品的图片-->
-                    <img src="../static/images/row-9.jpg" alt="">
-                </div>
-                <div class="item-as-price"><!--商品的价格-->
-                    <span>
+            <c:forEach items="${ads}" var="ad">
+                <div class="item-as"><!--商品开始-->
+                    <div class="item-as-img"><!--商品的图片-->
+                        <img src="${ctx}${ad.url1}" alt="">
+                    </div>
+                    <div class="item-as-price"><!--商品的价格-->
+                        <span>
                             <i class="fa fa-rmb text-danger"></i><!--bootstrap的钱图标-->
-                            <span class="seckill-price text-danger">79.9</span><!--text-danger（红色）-->
+                            <span class="seckill-price text-danger">${ad.price}</span><!--text-danger（红色）-->
                         </span>
-                </div>
-                <div class="item-as-intro"><!--商品简介-->
-                    <span>
-                            苹果12promax手机壳iPhone12保护套 全包碳纤维
-                        </span>
-                </div>
-                <div class="item-as-selled"><!--评价-->
-                    已有<span>5w+</span>人评价
-                </div>
-            </div>
-            <div class="item-as">
-                <div class="item-as-img">
-                    <img src="../static/images/row-10.jpg" alt="">
-                </div>
-                <div class="item-as-price">
+                    </div>
+                    <div class="item-as-intro"><!--商品简介-->
                         <span>
-                            <i class="fa fa-rmb text-danger"></i>
-                            <span class="seckill-price text-danger">59.9</span>
+                        <%-- 后期需要修改 --%>
+                            ${ad.name}
                         </span>
+                    </div>
+                    <div class="item-as-selled"><!--评价-->
+                        已有<span>${ad.gmNum}</span>人评价
+                    </div>
                 </div>
-                <div class="item-as-intro">
-                        <span>
-                             英悦苹果12手机壳iPhone12Pro Max液态硅胶
-                        </span>
-                </div>
-                <div class="item-as-selled">
-                    已有<span>5953</span>人评价
-                </div>
-            </div>
-            <div class="item-as"><!--商品开始-->
-                <div class="item-as-img"><!--商品的图片-->
-                    <img src="../static/images/row-9.jpg" alt="">
-                </div>
-                <div class="item-as-price"><!--商品的价格-->
-                    <span>
-                            <i class="fa fa-rmb text-danger"></i><!--bootstrap的钱图标-->
-                            <span class="seckill-price text-danger">79.9</span><!--text-danger（红色）-->
-                        </span>
-                </div>
-                <div class="item-as-intro"><!--商品简介-->
-                    <span>
-                            苹果12promax手机壳iPhone12保护套 全包碳纤维
-                        </span>
-                </div>
-                <div class="item-as-selled"><!--评价-->
-                    已有<span>5w+</span>人评价
-                </div>
-            </div>
-            <div class="item-as">
-                <div class="item-as-img">
-                    <img src="../static/images/row-10.jpg" alt="">
-                </div>
-                <div class="item-as-price">
-                        <span>
-                            <i class="fa fa-rmb text-danger"></i>
-                            <span class="seckill-price text-danger">59.9</span>
-                        </span>
-                </div>
-                <div class="item-as-intro">
-                        <span>
-                             英悦苹果12手机壳iPhone12Pro Max液态硅胶
-                        </span>
-                </div>
-                <div class="item-as-selled">
-                    已有<span>5953</span>人评价
-                </div>
-            </div>
-            <div class="item-as"><!--商品开始-->
-                <div class="item-as-img"><!--商品的图片-->
-                    <img src="../static/images/row-9.jpg" alt="">
-                </div>
-                <div class="item-as-price"><!--商品的价格-->
-                    <span>
-                            <i class="fa fa-rmb text-danger"></i><!--bootstrap的钱图标-->
-                            <span class="seckill-price text-danger">79.9</span><!--text-danger（红色）-->
-                        </span>
-                </div>
-                <div class="item-as-intro"><!--商品简介-->
-                    <span>
-                            苹果12promax手机壳iPhone12保护套 全包碳纤维
-                        </span>
-                </div>
-                <div class="item-as-selled"><!--评价-->
-                    已有<span>5w+</span>人评价
-                </div>
-            </div>
-            <div class="item-as">
-                <div class="item-as-img">
-                    <img src="../static/images/row-10.jpg" alt="">
-                </div>
-                <div class="item-as-price">
-                        <span>
-                            <i class="fa fa-rmb text-danger"></i>
-                            <span class="seckill-price text-danger">59.9</span>
-                        </span>
-                </div>
-                <div class="item-as-intro">
-                        <span>
-                             英悦苹果12手机壳iPhone12Pro Max液态硅胶
-                        </span>
-                </div>
-                <div class="item-as-selled">
-                    已有<span>5953</span>人评价
-                </div>
-            </div>
+            </c:forEach>
+            <editor-fold desc="Description">
+<%--                <div class="item-as">--%>
+<%--                    <div class="item-as-img">--%>
+<%--                        <img src="../static/images/row-10.jpg" alt="">--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-price">--%>
+<%--                        <span>--%>
+<%--                            <i class="fa fa-rmb text-danger"></i>--%>
+<%--                            <span class="seckill-price text-danger">59.9</span>--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-intro">--%>
+<%--                        <span>--%>
+<%--                             英悦苹果12手机壳iPhone12Pro Max液态硅胶--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-selled">--%>
+<%--                        已有<span>5953</span>人评价--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="item-as"><!--商品开始-->--%>
+<%--                    <div class="item-as-img"><!--商品的图片-->--%>
+<%--                        <img src="../static/images/row-9.jpg" alt="">--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-price"><!--商品的价格-->--%>
+<%--                        <span>--%>
+<%--                            <i class="fa fa-rmb text-danger"></i><!--bootstrap的钱图标-->--%>
+<%--                            <span class="seckill-price text-danger">79.9</span><!--text-danger（红色）-->--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-intro"><!--商品简介-->--%>
+<%--                        <span>--%>
+<%--                            苹果12promax手机壳iPhone12保护套 全包碳纤维--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-selled"><!--评价-->--%>
+<%--                        已有<span>5w+</span>人评价--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="item-as">--%>
+<%--                    <div class="item-as-img">--%>
+<%--                        <img src="../static/images/row-10.jpg" alt="">--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-price">--%>
+<%--                        <span>--%>
+<%--                            <i class="fa fa-rmb text-danger"></i>--%>
+<%--                            <span class="seckill-price text-danger">59.9</span>--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-intro">--%>
+<%--                        <span>--%>
+<%--                             英悦苹果12手机壳iPhone12Pro Max液态硅胶--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-selled">--%>
+<%--                        已有<span>5953</span>人评价--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="item-as"><!--商品开始-->--%>
+<%--                    <div class="item-as-img"><!--商品的图片-->--%>
+<%--                        <img src="../static/images/row-9.jpg" alt="">--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-price"><!--商品的价格-->--%>
+<%--                        <span>--%>
+<%--                            <i class="fa fa-rmb text-danger"></i><!--bootstrap的钱图标-->--%>
+<%--                            <span class="seckill-price text-danger">79.9</span><!--text-danger（红色）-->--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-intro"><!--商品简介-->--%>
+<%--                        <span>--%>
+<%--                            苹果12promax手机壳iPhone12保护套 全包碳纤维--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-selled"><!--评价-->--%>
+<%--                        已有<span>5w+</span>人评价--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--                <div class="item-as">--%>
+<%--                    <div class="item-as-img">--%>
+<%--                        <img src="../static/images/row-10.jpg" alt="">--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-price">--%>
+<%--                        <span>--%>
+<%--                            <i class="fa fa-rmb text-danger"></i>--%>
+<%--                            <span class="seckill-price text-danger">59.9</span>--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-intro">--%>
+<%--                        <span>--%>
+<%--                             英悦苹果12手机壳iPhone12Pro Max液态硅胶--%>
+<%--                        </span>--%>
+<%--                    </div>--%>
+<%--                    <div class="item-as-selled">--%>
+<%--                        已有<span>5953</span>人评价--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+            </editor-fold>
         </div>
         <div class="item-list-right">
             <div class="item-list-tool">
