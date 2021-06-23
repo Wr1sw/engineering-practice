@@ -185,8 +185,12 @@ public class LoginController {
     /**
      * 修改密码页面
      */
-
+    @RequestMapping("/pass")
+    public String pass() {
+        return "login/pass";
+    }
     /**
      * 执行修改密码
      */
+
 }
