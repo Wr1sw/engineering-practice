@@ -1,3 +1,4 @@
+<%@ page import="com.cuit.utils.Consts" %>
 <%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE html>
@@ -43,7 +44,7 @@
     </div>
     <div class="shop-item-path">
         <div class="shop-nav-container">
-            <p>${item.categoryIdOne} &nbsp > &nbsp ${item.categoryIdTwo} &nbsp > &nbsp ${item.name}</p>
+            <p>${Consts.CATEGORY.get(item.categoryIdOne)} &nbsp > &nbsp ${Consts.CATEGORY.get(item.categoryIdTwo)} &nbsp > &nbsp ${item.name}</p>
         </div>
     </div>
     <!-- 商品信息展示 -->
@@ -69,7 +70,7 @@
         </div>
         <div class="item-detail-right">
             <div class="item-detail-title">
-                <p><span class="item-detail-express">校园配送</span> ${item.name}</p>
+                <p><span class="item-detail-express">校园配送</span> ${item.ms}</p>
             </div>
             <div class="item-detail-tag">
                 <p><span>【满99-20元】</span> <span>【关注产品★送周边】</span> <span>【京配次日达】</span></p>
