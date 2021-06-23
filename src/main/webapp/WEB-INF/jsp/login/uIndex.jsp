@@ -138,42 +138,6 @@
                                     </div>
                                 </div>
                             </c:forEach>
-<%--                            <div class="item-four-detail">--%>
-<%--                                <div class="item-four-detail-text">--%>
-<%--                                    <p class="pt_bi_tit">外设装备</p>--%>
-<%--                                    <p class="pt_bi_promo">1000减618</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="item-four-detail-img">--%>
-<%--                                    <img src="${ctx}/static/images/item-computer-1-3.jpg">--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="item-four-detail">--%>
-<%--                                <div class="item-four-detail-text">--%>
-<%--                                    <p class="pt_bi_tit">电脑配件</p>--%>
-<%--                                    <p class="pt_bi_promo">联合满减<br>最高省618</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="item-four-detail-img">--%>
-<%--                                    <img src="${ctx}/static/images/item-computer-1-4%20.jpg">--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="item-four-detail">--%>
-<%--                                <div class="item-four-detail-text">--%>
-<%--                                    <p class="pt_bi_tit">办公生活</p>--%>
-<%--                                    <p class="pt_bi_promo">5折神券 精品文具</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="item-four-detail-img">--%>
-<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-1-5.jpg" alt=""></a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="item-four-detail">--%>
-<%--                                <div class="item-four-detail-text">--%>
-<%--                                    <p class="pt_bi_tit">办公生活</p>--%>
-<%--                                    <p class="pt_bi_promo">5折神券 精品文具</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="item-four-detail-img">--%>
-<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-1-5.jpg" alt=""></a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
                         </div>
                        </div>
                 </div>
@@ -194,42 +158,6 @@
                                     </div>
                                 </div>
                             </c:forEach>
-<%--                            <div class="item-four-detail">--%>
-<%--                                <div class="item-four-detail-text">--%>
-<%--                                    <p class="pt_bi_tit">笔记本电脑</p>--%>
-<%--                                    <p class="pt_bi_promo">爆款12期免息</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="item-four-detail-img">--%>
-<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-2.jpg" alt=""></a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="item-four-detail">--%>
-<%--                                <div class="item-four-detail-text">--%>
-<%--                                    <p class="pt_bi_tit">智能酷玩</p>--%>
-<%--                                    <p class="pt_bi_promo">抢999减666神券</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="item-four-detail-img">--%>
-<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-3.jpg" alt=""></a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="item-four-detail">--%>
-<%--                                <div class="item-four-detail-text">--%>
-<%--                                    <p class="pt_bi_tit">娱乐影音</p>--%>
-<%--                                    <p class="pt_bi_promo">大牌耳机低至5折</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="item-four-detail-img">--%>
-<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-4.jpg" alt=""></a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="item-four-detail">--%>
-<%--                                <div class="item-four-detail-text">--%>
-<%--                                    <p class="pt_bi_tit">摄影摄像</p>--%>
-<%--                                    <p class="pt_bi_promo">大牌相机5折抢</p>--%>
-<%--                                </div>--%>
-<%--                                <div class="item-four-detail-img">--%>
-<%--                                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/item-computer-2-5.jpg" alt=""></a>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
                         </div>
                     </div>
                </div>
