@@ -1,4 +1,4 @@
-<%@ page import="com.cuit.utils.StringUtils" %>
+<%@ page import="com.cuit.utils.Consts" %>
 <%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
  <%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE html>
@@ -75,15 +75,15 @@
             <div class="nav-content">
                 <!-- 幻灯片 -->
                 <div class="slide">
-                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/4.jpg"></a>
+                    <a href="#"><img src="${ctx}/static/images/GoodsPicture/4.jpg"></a>
                 </div>
                 <div class="nav-show">
-                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/nav_showimg1.jpg"></a></div>
-                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/nav_showimg2.jpg"></a></div>
+                    <div class="nav-show-img"><a href="#"><img src="${ctx}/static/images/GoodsPicture/nav_showimg1.jpg"></a></div>
+                    <div class="nav-show-img"><a href="#"><img src="${ctx}/static/images/GoodsPicture/nav_showimg2.jpg"></a></div>
                 </div>
             </div>
             <div>
-                <span><a href="#"><img src="${pageContext.request.contextPath}/static/images/fam.png"></a></span>
+                <span><a href="#"><img src="${ctx}/static/images/GoodsPicture/fam.png"></a></span>
             </div>
         </div>
         <!--商品显示区-->
@@ -126,17 +126,17 @@
                 <div class="item-class-content">
                     <div class="item-content-top">
                         <div class="item-big-img">
-                            <img src="${ctx}${rxItem1.url1}">
+                            <a href="${ctx}/Item/view?id=${rxItem1.id}"><img src="${ctx}${rxItem1.url1}"></a>
                         </div>
                         <div class="item-four-img">
                             <c:forEach items="${rxItemsLeft}" var="item" varStatus="l">
                                 <div class="item-four-detail">
                                     <div class="item-four-detail-text">
-                                        <p class="pt_bi_tit">${item.categoryIdOne}</p>
-                                        <p class="pt_bi_promo">${item.categoryIdTwo}</p>
+                                        <p class="pt_bi_tit">${Consts.CATEGORY.get(item.categoryIdOne)}</p>
+                                        <p class="pt_bi_promo">${Consts.CATEGORY.get(item.categoryIdTwo)}</p>
                                     </div>
                                     <div class="item-four-detail-img">
-                                        <img src="${ctx}${item.url1}">
+                                        <a href="${ctx}/Item/view?id=${item.id}"><img src="${ctx}${item.url1}"></a>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -146,17 +146,17 @@
                 <div class="item-class-content">
                     <div class="item-content-top">
                         <div class="item-big-img">
-                            <img src="${ctx}${rxItem2.url1}" alt="">
+                            <a href="${ctx}/Item/view?id=${rxItem2.id}"><img src="${ctx}${rxItem2.url1}"></a>
                         </div>
                         <div class="item-four-img">
                             <c:forEach items="${rxItemsRight}" var="item" varStatus="l">
                                 <div class="item-four-detail">
                                     <div class="item-four-detail-text">
-                                        <p class="pt_bi_tit">${item.categoryIdOne}</p>
-                                        <p class="pt_bi_promo">${item.categoryIdTwo}</p>
+                                        <p class="pt_bi_tit">${Consts.CATEGORY.get(item.categoryIdOne)}</p>
+                                        <p class="pt_bi_promo">${Consts.CATEGORY.get(item.categoryIdTwo)}</p>
                                     </div>
                                     <div class="item-four-detail-img">
-                                        <img src="${ctx}${item.url1}">
+                                        <a href="${ctx}/Item/view?id=${item.id}"><img src="${ctx}${item.url1}"></a>
                                     </div>
                                 </div>
                             </c:forEach>
