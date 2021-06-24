@@ -83,7 +83,9 @@ public class CarController {
      * function: 购物车列表页面，点击+给该商品数量加1
      */
     @RequestMapping("/addNum")
-    public @ResponseBody Car AddNum(HttpServletRequest request){
+    @ResponseBody
+    public String AddNum(HttpServletRequest request){
+        JSONObject object = new JSONObject();
         int id = Integer.parseInt(request.getParameter("id"));
         int condition = Integer.parseInt(request.getParameter("condition"));
         Car car = carService.load(id);
@@ -98,7 +100,24 @@ public class CarController {
         }
         car.setTotal(String.valueOf(total));
         carService.updateById(car);
-        return car;
+        object.put("car",car);
+        return object.toJSONString();
+    }
+
+    /**
+     * create by Miracle
+     * @param request
+     * @return
+     * function delete a goods
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public String Delete(HttpServletRequest request){
+        JSONObject jsonObject = new JSONObject();
+        int id = Integer.parseInt(request.getParameter("id"));
+        carService.deleteById(id);
+        jsonObject.put("result",true);
+        return jsonObject.toJSONString();
     }
 
     /**
