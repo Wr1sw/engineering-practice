@@ -211,7 +211,8 @@
                     alert("请登录")
                     window.location.href="${ctx}/login/uLogin";
                 }else{
-                    window.location.href="${ctx}/car/findBySql";
+                    <%--window.location.href="${ctx}/car/findBySql";--%>
+                    alert("该商品正在购物车等您");
                 }
             }
         });
