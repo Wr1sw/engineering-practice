@@ -57,15 +57,15 @@
     </div>
 
     <c:forEach items="${list}" var="data" varStatus="l">
-    <div class="shop_box comWidth">
+    <div class="shop_box comWidth" id="${data.id}">
             <div class="shop_product">
-                <input type="checkbox" name="allcheck" value="allcheck" class="fl"/>
+                <input type="checkbox" name="checkbox" value="${data.total}"onclick="Cal();" class="fl"/>
 
                 <img src="${ctx}${data.item.url1}" alt="" class="fl" width="90" height="90"/>
 
                 <div class="shoppro_des bh fl"> ${data.item.ms}</div>
                 <div class="shoppro_price fr"> <span class="bh">已入收藏夹</span><br />
-                    <span class="bh">删除</span> </div>
+                    <span class="bh"><a href="javascript:Delete(${data.id})">删除</a></span> </div>
                 <div class="shoppro_price fr"> <span class="Carnum">￥<fmt:formatNumber value="${data.total}" type="currency" pattern="0.00"/></span> </div>
                 <div class="shoppro_price fr">
                     <div class="reduction fl"><input type="button" value="-" onclick="Reduce(${data.id})"></div>
@@ -84,8 +84,8 @@
 
     <div class="shoppingcar_acc">
         <div class="shoppingcar_accright fr">
-            <span>已选商品<i class="Carnum3">1</i>件</span>
-            <span>合计（不含运费）: <i class="Carnum4">45.00</i></span>
+            <span>已选商品<i class="Carnum3"><span id ="num">0</span></i>件</span>
+            <span>合计（不含运费）: <i class="Carnum4"><span id="money">0.0</span></i></span>
             <button type="button"><a href="../pay.jsp" style="text-decoration: none;color: red">结算</a></button>
         </div>
 
@@ -101,7 +101,6 @@
             type:"POST",
             data: {"id":id,"condition":1},
             success: function (result){
-                $.get("${ctx}/car/findBySql");
                 window.location.reload();
             }
         });
@@ -111,11 +110,64 @@
             url:"${ctx}/car/addNum",
             type:"POST",
             data: {"id":id,"condition":0},
+            async:false,
             success: function (result){
-                $.get("${ctx}/car/findBySql");
                 window.location.reload();
             }
         });
     }
+
+    function Delete(id){
+        alert("确定要删除?");
+        $.get("${ctx}/car/delete?id="+id,
+            function (data){
+                var rs = JSON.parse(data);
+                if(rs.result){
+                    alert("删除成功");
+                    $("#"+id).remove();
+                }
+            }
+        );
+    }
+
+    /*
+        Cal()函数用到的全局变量
+    */
+    var money = 0.0;
+    var temp = 0.0;
+    var flag = 0;
+    var num = 0;
+
+    /**
+     * create by Miracle
+     * function: 实现点击商品，结算的功能
+     * @constructor
+     */
+    function Cal(){
+        var Money = document.getElementById("money");
+        var Num = document.getElementById("num");
+        var count = 0.0;
+        var box = document.getElementsByName("checkbox");
+        for(var i = 0; i < box.length; i++){
+            if(box[i].checked && flag ==0){
+                temp += parseFloat(box[i].value);
+            }else if(box[i].checked && flag !=0){
+                count += parseFloat(box[i].value);
+            }
+        }
+        if(flag == 0){
+            money += temp;
+            flag =1;
+            num += 1;
+        }else{
+            num = count > temp ? ++num:--num;
+            money += count - temp;
+            temp = count;
+        }
+        Money.innerHTML = money.toFixed(2);
+        Num.innerHTML = num.toFixed(2);
+    }
+
+
 </script>
 </html>
