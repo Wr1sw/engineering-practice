@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../static/css/font-awesome.css">
     <link rel="stylesheet" href="../static/css/mall.css">
+    <script type="text/javascript" src="../static/js/jquery.js"></script>
 </head>
 <body>
 <!-- 顶部导航条 -->
@@ -62,20 +63,20 @@
 
                 <img src="${ctx}${data.item.url1}" alt="" class="fl" width="90" height="90"/>
 
-                <div class="shoppro_des bh fl"> ${data.item.name}</div>
+                <div class="shoppro_des bh fl"> ${data.item.ms}</div>
                 <div class="shoppro_price fr"> <span class="bh">已入收藏夹</span><br />
                     <span class="bh">删除</span> </div>
-                <div class="shoppro_price fr"> <span class="Carnum">￥${data.item.price}</span> </div>
+                <div class="shoppro_price fr"> <span class="Carnum">￥<fmt:formatNumber value="${data.total}" type="currency" pattern="0.00"/></span> </div>
                 <div class="shoppro_price fr">
-                    <div class="reduction fl">-</div>
+                    <div class="reduction fl"><input type="button" value="-" onclick="Reduce(${data.id})"></div>
                     <div class="select_input fl" >
-                        <input type="text" >
+                        <input type="text" value="${data.num}" id="${data.id}">
                     </div>
-                    <div class="plus fl">+</div>
+                    <div class="plus fl"><input type="button" value="+" onclick="Add(${data.id})"></div>
                 </div>
                 <div class="shoppro_price fr">
-                    <div class="Carnum1">￥${data.item.price}+20</div>
-                    <div class="Carnum2">￥${data.item.price}</div>
+                    <div class="Carnum1">￥<fmt:formatNumber value="${data.price+data.price*0.1}" type="currency" pattern="0.00"/></div>
+                    <div class="Carnum2" >￥<fmt:formatNumber value="${data.price}" type="currency" pattern="0.00"/></div>
                 </div>
             </div>
     </div>
@@ -93,4 +94,28 @@
 <!-- 底部 -->
 <%@include file="../Footer.jsp"%>
 </body>
+<script>
+    function Add(id){
+        $.ajax({
+            url:"${ctx}/car/addNum",
+            type:"POST",
+            data: {"id":id,"condition":1},
+            success: function (result){
+                $.get("${ctx}/car/findBySql");
+                window.location.reload();
+            }
+        });
+    }
+    function Reduce(id){
+        $.ajax({
+            url:"${ctx}/car/addNum",
+            type:"POST",
+            data: {"id":id,"condition":0},
+            success: function (result){
+                $.get("${ctx}/car/findBySql");
+                window.location.reload();
+            }
+        });
+    }
+</script>
 </html>
