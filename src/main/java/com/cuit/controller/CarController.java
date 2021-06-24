@@ -30,7 +30,9 @@ public class CarController {
      * @param car
      * @param request
      * @return json
-     * by wr1sw
+     * create by wr1sw
+     * Modified by Miracle
+     * function: 加入购物车，有同款只做更新操作，没有同款做插入操作
      */
     @RequestMapping("/Add")
     @ResponseBody
@@ -47,20 +49,56 @@ public class CarController {
         car.setUserId(userId);
         Item item = itemService.load(car.getItemId());
         String price = item.getPrice();
-        Double aDouble = Double.valueOf(price);
+        float aDouble = Float.parseFloat(price);
         car.setPrice(aDouble);
         if (item.getZk()!=null) {
             aDouble = aDouble * item.getZk()/10;
             car.setPrice(aDouble);
         }
         Integer num = car.getNum();
-        Double total = num * aDouble;
-        String s = String.valueOf(total);
-        car.setTotal(s);
-        carService.insert(car);
+        float total = num * aDouble;
+        car.setTotal(String.valueOf(total));
+
+        String sql = "select * from car where item_id = "+car.getItemId();
+        Car car1 = carService.getBySqlReturnEntity(sql);
+        if(car1 == null){
+            carService.insert(car);
+        }else {
+            Integer integer = car1.getNum();
+            car1.setNum(++integer);
+            car1.setPrice(aDouble);
+            float temp = Float.parseFloat(car1.getTotal())+total;
+            car1.setTotal(String.valueOf(temp));
+            carService.updateById(car1);
+        }
         jsonObject.put(Consts.RES,1);
         System.out.println(car);
         return jsonObject.toJSONString();
+    }
+
+    /**
+     * create by Miracle
+     * @param request
+     * @return
+     * function: 购物车列表页面，点击+给该商品数量加1
+     */
+    @RequestMapping("/addNum")
+    public @ResponseBody Car AddNum(HttpServletRequest request){
+        int id = Integer.parseInt(request.getParameter("id"));
+        int condition = Integer.parseInt(request.getParameter("condition"));
+        Car car = carService.load(id);
+        Integer integer = car.getNum();
+        float total = Float.parseFloat(car.getTotal());
+        if(condition == 1){
+            car.setNum(++integer);
+            total += car.getPrice();
+        }else{
+            car.setNum(--integer);
+            total -= car.getPrice();
+        }
+        car.setTotal(String.valueOf(total));
+        carService.updateById(car);
+        return car;
     }
 
     /**
