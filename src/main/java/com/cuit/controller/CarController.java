@@ -100,7 +100,8 @@ public class CarController {
         }
         car.setTotal(String.valueOf(total));
         carService.updateById(car);
-        object.put("car",car);
+        object.put("num",integer);
+        object.put("total",total);
         return object.toJSONString();
     }
 
