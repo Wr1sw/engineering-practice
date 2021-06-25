@@ -21,20 +21,17 @@
     <div class="container">
         <!--搜索框-->
         <div class="search">
-            <form action="${ctx}/Item/shoplist" method="post">
-                <div class="search-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="关键词查询" name="condition" value="${condition}">
-                        <span class="input-group-btn">
-                        <a href="${pageContext.request.contextPath}/Trail/search"><button class="btn btn-danger btn-search" type="submit">
-                            <i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
-                      </span>
-                    </div>
-                    <div class="search-keyword">
-                        <p>&nbsp;&nbsp;小满节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 时尚服装&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 墅质家居&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
-                    </div>
+            <div class="search-body">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="输入你想要的商品">
+                    <span class="input-group-btn">
+			        <a href="search.jsp"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
+			      </span>
                 </div>
-            </form>
+                <div class="search-keyword">
+                    <p>&nbsp;&nbsp;夏至节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 性能猛兽&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 颜值手机&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
+                </div>
+            </div>
         </div>
 
         <!-- 横向导航 -->
@@ -120,7 +117,7 @@
                 <div class="item-class-head">
                     <span class="item-class-title">电脑数码</span>
                     <ul>
-                        <li><a href="#">电脑馆</a></li>
+                        <li><a href="${ctx}/Item/shoplist?condition=电脑">电脑馆</a></li>
                     </ul>
                 </div>
                 <div class="item-class-content">
