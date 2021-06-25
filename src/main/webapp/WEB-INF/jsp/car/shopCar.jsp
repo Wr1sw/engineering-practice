@@ -13,30 +13,29 @@
 <body>
 <!-- 顶部导航条 -->
 <%@include file="../Head.jsp"%>
-<!-- 搜索框 -->
+<!--搜索框-->
 <div class="search">
     <div class="search-body">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="输入你想要的商品">
             <span class="input-group-btn">
-			        <a href="../item/search.jsp"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
+			        <a href="search.jsp"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
 			      </span>
         </div>
         <div class="search-keyword">
-            <p>&nbsp;&nbsp;小满节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 时尚服装&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 墅质家居&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
+            <p>&nbsp;&nbsp;夏至节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 性能猛兽&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 颜值手机&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
         </div>
     </div>
 </div>
-
 <!-- 导航栏 -->
 <div class="search-nav">
     <div class="search-nav-container search-nav-container-90">
         <ul>
             <li>购物车</li>
-            <li><a href="../Trail.jsp">首页</a></li>
-            <li><a href="../Trail.jsp">服装城</a></li>
-            <li><a href="../Trail.jsp">美妆馆</a></li>
-            <li><a href="../Trail.jsp">生鲜</a></li>
+            <li><a href="${ctx}/login/uIndex">首页</a></li>
+            <li><a href="${ctx}/Item/shoplist?condition=手机">手机馆</a></li>
+            <li><a href="${ctx}/Item/shoplist?condition=电脑">电脑馆</a></li>
+            <li><a href="${ctx}/Item/shoplist?condition=平板">平板馆</a></li>
         </ul>
     </div>
 </div>
@@ -86,7 +85,7 @@
         <div class="shoppingcar_accright fr">
             <span>已选商品<i class="Carnum3"><span id ="num">0</span></i>件</span>
             <span>合计（不含运费）: <i class="Carnum4"><span id="money">0.0</span></i></span>
-            <button type="button"><a href="../pay.jsp" style="text-decoration: none;color: red">结算</a></button>
+            <button type="button" style="text-decoration: none;color: red" onclick="Pay();">结算</button>
         </div>
 
     </div>
@@ -95,6 +94,7 @@
 <%@include file="../Footer.jsp"%>
 </body>
 <script>
+
     function Add(id){
         $.ajax({
             url:"${ctx}/car/addNum",
@@ -128,7 +128,6 @@
             });
         }
     }
-
     function Delete(id){
         if($("#money").text() != 0){
             alert("正在结算不可删除");
@@ -147,7 +146,6 @@
         }
 
     }
-
     /*
         Cal()函数用到的全局变量
     */
@@ -191,6 +189,15 @@
             Num.innerHTML = num.toFixed(2);
 
     }
+
+    function Pay(){
+        if($("#money").text() != 0){
+            window.location.href = "${ctx}/itemOrder/orderDetail";
+        }else {
+            alert("请您选择购买的商品");
+        }
+    }
+
 
 
 </script>
