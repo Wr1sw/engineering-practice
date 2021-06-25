@@ -26,7 +26,7 @@
 			      </span>
             </div>
             <div class="search-keyword">
-                <p>&nbsp;&nbsp;小满节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 时尚服装&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 墅质家居&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
+                <p>&nbsp;&nbsp;夏至节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 性能猛兽&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 颜值手机&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
             </div>
         </div>
     </div>
@@ -35,10 +35,10 @@
         <div class="search-nav-container search-nav-container-90">
             <ul>
                 <li>商品详情</li>
-                <li><a href="../Trail.jsp">首页</a></li>
-                <li><a href="../Trail.jsp">服装城</a></li>
-                <li><a href="../Trail.jsp">美妆馆</a></li>
-                <li><a href="../Trail.jsp">生鲜</a></li>
+                <li><a href="${ctx}/login/uIndex">首页</a></li>
+                <li><a href="${ctx}/Item/shoplist?condition=手机">手机馆</a></li>
+                <li><a href="${ctx}/Item/shoplist?condition=电脑">电脑馆</a></li>
+                <li><a href="${ctx}/Item/shoplist?condition=平板">平板馆</a></li>
             </ul>
         </div>
     </div>
