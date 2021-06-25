@@ -1,5 +1,6 @@
 package com.cuit.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cuit.base.BaseController;
 import com.cuit.pojo.User;
 import com.cuit.service.UserService;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -51,5 +53,21 @@ public class UserController extends BaseController {
         user.setId(Integer.valueOf(attribute.toString()));
         userService.updateById(user);
         return "redirect:/user/view";
+    }
+
+    @RequestMapping("/doVerify")
+    @ResponseBody
+    public String doVerify(HttpServletRequest request){
+        JSONObject json = new JSONObject();
+        String password = request.getParameter("oldPwd");
+        User user = userService.getById(Integer.parseInt(request.getSession().getAttribute(Consts.USERID).toString()));
+        if(user.getPassWord().equals(password)){
+            json.put("result",1);
+            user.setPassWord(request.getParameter("newPwd"));
+            userService.updateById(user);
+        }else {
+            json.put("result",0);
+        }
+        return json.toJSONString();
     }
 }
