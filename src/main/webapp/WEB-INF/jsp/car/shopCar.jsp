@@ -59,18 +59,18 @@
     <c:forEach items="${list}" var="data" varStatus="l">
     <div class="shop_box comWidth" id="${data.id}">
             <div class="shop_product">
-                <input type="checkbox" name="checkbox" value="${data.total}"onclick="Cal();" class="fl"/>
+                <input type="checkbox" name="checkbox" value="${data.total}" id="c${data.id}" onclick="Cal(1);" class="fl"/>
 
                 <img src="${ctx}${data.item.url1}" alt="" class="fl" width="90" height="90"/>
 
                 <div class="shoppro_des bh fl"> ${data.item.ms}</div>
                 <div class="shoppro_price fr"> <span class="bh">已入收藏夹</span><br />
                     <span class="bh"><a href="javascript:Delete(${data.id})">删除</a></span> </div>
-                <div class="shoppro_price fr"> <span class="Carnum">￥<fmt:formatNumber value="${data.total}" type="currency" pattern="0.00"/></span> </div>
+                <div class="shoppro_price fr"> <span class="Carnum" id="a${data.id}">￥<fmt:formatNumber value="${data.total}" type="currency" pattern="0.00"/></span> </div>
                 <div class="shoppro_price fr">
                     <div class="reduction fl"><input type="button" value="-" onclick="Reduce(${data.id})"></div>
                     <div class="select_input fl" >
-                        <input type="text" value="${data.num}" id="${data.id}">
+                        <input type="text" value="${data.num}" id="b${data.id}">
                     </div>
                     <div class="plus fl"><input type="button" value="+" onclick="Add(${data.id})"></div>
                 </div>
@@ -101,33 +101,51 @@
             type:"POST",
             data: {"id":id,"condition":1},
             success: function (result){
-                window.location.reload();
+                var car = JSON.parse(result);
+                $("#a"+id).html(car.total.toFixed(2));
+                $("#b"+id).val(car.num);
+                $("#c"+id).val(car.total.toFixed(2));
+                Cal(0);
             }
         });
     }
     function Reduce(id){
-        $.ajax({
-            url:"${ctx}/car/addNum",
-            type:"POST",
-            data: {"id":id,"condition":0},
-            async:false,
-            success: function (result){
-                window.location.reload();
-            }
-        });
+        if($("#b"+id).val()<=1){
+            alert("商品的购买数量不能小于1");
+        }else{
+            $.ajax({
+                url:"${ctx}/car/addNum",
+                type:"POST",
+                data: {"id":id,"condition":0},
+                async:false,
+                success: function (result){
+                    var car = JSON.parse(result);
+                    $("#a"+id).html(car.total.toFixed(2));
+                    $("#b"+id).val(car.num);
+                    $("#c"+id).val(car.total.toFixed(2));
+                    Cal(0);
+                }
+            });
+        }
     }
 
     function Delete(id){
-        alert("确定要删除?");
-        $.get("${ctx}/car/delete?id="+id,
-            function (data){
-                var rs = JSON.parse(data);
-                if(rs.result){
-                    alert("删除成功");
-                    $("#"+id).remove();
+        if($("#money").text() != 0){
+            alert("正在结算不可删除");
+        }else{
+            alert("确定要删除?");
+            $.get("${ctx}/car/delete?id="+id,
+                function (data){
+                    var rs = JSON.parse(data);
+                    if(rs.result){
+                        alert("删除成功");
+                        $("#"+id).remove();
+                    }
                 }
-            }
-        );
+
+            );
+        }
+
     }
 
     /*
@@ -143,7 +161,7 @@
      * function: 实现点击商品，结算的功能
      * @constructor
      */
-    function Cal(){
+    function Cal(condition){
         var Money = document.getElementById("money");
         var Num = document.getElementById("num");
         var count = 0.0;
@@ -155,17 +173,23 @@
                 count += parseFloat(box[i].value);
             }
         }
-        if(flag == 0){
-            money += temp;
-            flag =1;
-            num += 1;
-        }else{
-            num = count > temp ? ++num:--num;
-            money += count - temp;
-            temp = count;
-        }
-        Money.innerHTML = money.toFixed(2);
-        Num.innerHTML = num.toFixed(2);
+            if(flag == 0 && condition == 0){//第一次点击—+，
+
+            }else if (flag == 0 && condition != 0) {//第一次购物
+                money += temp;
+                flag =1;
+                num += 1;
+            }else if(flag == 1 && condition != 0){//第n次结算商品
+                num = count > temp ? ++num : --num;
+                money += count - temp;
+                temp = count;
+            }else if(flag == 1 && condition == 0){
+                money += count - temp;
+                temp = count;
+            }
+            Money.innerHTML = money.toFixed(2);
+            Num.innerHTML = num.toFixed(2);
+
     }
 
 
