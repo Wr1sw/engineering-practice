@@ -42,7 +42,7 @@ public class ItemController extends BaseController {
         String sqlForAds = "select * from item where isDelete=0 and zk is not null order by gmNum desc limit 6";
         if(!isEmpty(item.getCategoryIdTwo())) sql+="  and category_id_two=" + item.getCategoryIdTwo();
         if(!isEmpty(condition)) {
-            sql+= " and name like '%" + condition + "%'";
+            sql+= " and ms like '%" + condition + "%'";
             model.addAttribute("condition",condition);
         }
         Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
