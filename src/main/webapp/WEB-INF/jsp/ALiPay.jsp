@@ -13,17 +13,17 @@
 <body>
 <!--顶部导航栏-->
 <%@include file="Head.jsp"%>
-<!-- 搜索框 -->
+<!--搜索框-->
 <div class="search">
     <div class="search-body">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="输入你想要的商品">
             <span class="input-group-btn">
-			        <a href="item/search.jsp"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
+			        <a href="search.jsp"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
 			      </span>
         </div>
         <div class="search-keyword">
-            <p>&nbsp;&nbsp;小满节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 时尚服装&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 墅质家居&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
+            <p>&nbsp;&nbsp;夏至节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 性能猛兽&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 颜值手机&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
         </div>
     </div>
 </div>
@@ -32,10 +32,10 @@
     <div class="search-nav-container search-nav-container-90">
         <ul>
             <li>支付成功</li>
-            <li><a href="Trail.jsp">首页</a></li>
-            <li><a href="Trail.jsp">服装城</a></li>
-            <li><a href="Trail.jsp">美妆馆</a></li>
-            <li><a href="Trail.jsp">生鲜</a></li>
+            <li><a href="${ctx}/login/uIndex">首页</a></li>
+            <li><a href="${ctx}/Item/shoplist?condition=手机">手机馆</a></li>
+            <li><a href="${ctx}/Item/shoplist?condition=电脑">电脑馆</a></li>
+            <li><a href="${ctx}/Item/shoplist?condition=平板">平板馆</a></li>
         </ul>
     </div>
 </div>
