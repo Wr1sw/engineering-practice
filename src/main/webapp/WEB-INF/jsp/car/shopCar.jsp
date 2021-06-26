@@ -85,7 +85,7 @@
         <div class="shoppingcar_accright fr">
             <span>已选商品<i class="Carnum3"><span id ="num">0</span></i>件</span>
             <span>合计（不含运费）: <i class="Carnum4"><span id="money">0.0</span></i></span>
-            <button type="button" style="text-decoration: none;color: red" onclick="Pay();">结算</button>
+            <button type="button" style="text-decoration: none;color: red; font-family:  'Microsoft YaHei'" onclick="Pay();">去结算</button>
         </div>
 
     </div>
@@ -192,7 +192,12 @@
 
     function Pay(){
         if($("#money").text() != 0){
-            window.location.href = "${ctx}/itemOrder/orderDetail";
+            var s = "";
+            $('input:checkbox[name=checkbox]:checked').each(function(){
+                var ID =  $(this).attr("ID"); //使用attr属性获取ID 或者其他的属性
+                s += ID+",";
+            });
+            window.location.href = "${ctx}/itemOrder/orderDetail?ids="+s;
         }else {
             alert("请您选择购买的商品");
         }
