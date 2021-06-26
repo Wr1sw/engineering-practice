@@ -154,3 +154,94 @@
     font-style:normal;
     color:#C00;
     padding:0 5px;}
+
+/*CSS style For Order Detail Create By Miracle*/
+.Order_Detail{
+    background-color: whitesmoke;
+    margin-top:20px;}
+
+.OrderDetail_sum{
+    width:100%;
+    height:50px;}
+
+.OrderDetail_sum li{
+    display:inline-block;
+    float:left;
+    width:135px;
+    height:100%;
+    line-height:50px;}
+.OrderTotal{
+    margin-right: 100px;;
+}
+.OrderWidth{
+    width:1100px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.OrderAddress{
+    margin-right: 145px;
+}
+.OrderLeft{
+    float:left;
+}
+
+.OrderRight{
+    float:right;
+}
+.OrderRight1{
+    float:right;
+    margin-top: 30px;
+}
+
+.Order_box{
+    margin-top:20px;
+}
+
+.Order_product{
+    background-color:#FCFCFC;
+    width:1100px;
+    /*height:80px;*/
+    height:140px;
+    border:1px solid #ccc;
+    margin-top:10px;
+    padding:20px;
+    position:relative;}
+
+.Order_des{
+    height:110px;
+    width:180px;
+    margin-left:15px;
+}
+.OrderPhone{
+    border: 0;
+    font:bold 16px/25px "微软雅黑";
+    margin-right: 20px;
+    width: 120px;
+}
+.Order_price{
+    width:100px;
+    margin-right: 40px;
+}
+.OrderNum{
+    font:bold 16px/25px "微软雅黑";
+    font-style:normal;
+    color:#C00;
+    padding-left:5px;
+}
+.OrderPerson{
+    font:bold 16px/25px "微软雅黑";
+    font-style:normal;
+    color:black;
+    border: 0;
+    padding-left:5px;
+    margin-right: 10px;
+    width: 100px;
+}
+.Order_input{
+    height:28px;
+    width:350px;
+    background-color:#fff;
+    margin-right: 50px;
+    text-decoration: none;
+    border: 0;
+}
