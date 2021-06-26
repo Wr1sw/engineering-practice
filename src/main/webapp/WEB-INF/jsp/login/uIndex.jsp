@@ -1,4 +1,4 @@
-<%@ page import="com.cuit.utils.Consts" %>
+<%@ page import="com.cuit.utils.StringUtils" %>
 <%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
  <%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE html>
@@ -21,17 +21,20 @@
     <div class="container">
         <!--搜索框-->
         <div class="search">
-            <div class="search-body">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="输入你想要的商品">
-                    <span class="input-group-btn">
-			        <a href="search.jsp"><button class="btn btn-danger btn-search" type="button"><i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
-			      </span>
+            <form action="${ctx}/Item/shoplist" method="post">
+                <div class="search-body">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="关键词查询" name="condition" value="${condition}">
+                        <span class="input-group-btn">
+                        <a href="${pageContext.request.contextPath}/Trail/search"><button class="btn btn-danger btn-search" type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
+                      </span>
+                    </div>
+                    <div class="search-keyword">
+                        <p>&nbsp;&nbsp;小满节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 时尚服装&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 墅质家居&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
+                    </div>
                 </div>
-                <div class="search-keyword">
-                    <p>&nbsp;&nbsp;夏至节气 &nbsp;&nbsp;  满199减100&nbsp;&nbsp; 性能猛兽&nbsp;&nbsp;国际大牌 &nbsp;&nbsp; 颜值手机&nbsp;&nbsp; 品质生活&nbsp;&nbsp;</p>
-                </div>
-            </div>
+            </form>
         </div>
 
         <!-- 横向导航 -->
@@ -72,15 +75,15 @@
             <div class="nav-content">
                 <!-- 幻灯片 -->
                 <div class="slide">
-                    <a href="#"><img src="${ctx}/static/images/GoodsPicture/4.jpg"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/4.jpg"></a>
                 </div>
                 <div class="nav-show">
-                    <div class="nav-show-img"><a href="#"><img src="${ctx}/static/images/GoodsPicture/nav_showimg1.jpg"></a></div>
-                    <div class="nav-show-img"><a href="#"><img src="${ctx}/static/images/GoodsPicture/nav_showimg2.jpg"></a></div>
+                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/nav_showimg1.jpg"></a></div>
+                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/nav_showimg2.jpg"></a></div>
                 </div>
             </div>
             <div>
-                <span><a href="#"><img src="${ctx}/static/images/GoodsPicture/fam.png"></a></span>
+                <span><a href="#"><img src="${pageContext.request.contextPath}/static/images/fam.png"></a></span>
             </div>
         </div>
         <!--商品显示区-->
@@ -117,23 +120,23 @@
                 <div class="item-class-head">
                     <span class="item-class-title">电脑数码</span>
                     <ul>
-                        <li><a href="${ctx}/Item/shoplist?condition=电脑">电脑馆</a></li>
+                        <li><a href="#">电脑馆</a></li>
                     </ul>
                 </div>
                 <div class="item-class-content">
                     <div class="item-content-top">
                         <div class="item-big-img">
-                            <a href="${ctx}/Item/view?id=${rxItem1.id}"><img src="${ctx}${rxItem1.url1}"></a>
+                            <img src="${ctx}${rxItem1.url1}">
                         </div>
                         <div class="item-four-img">
                             <c:forEach items="${rxItemsLeft}" var="item" varStatus="l">
                                 <div class="item-four-detail">
                                     <div class="item-four-detail-text">
-                                        <p class="pt_bi_tit">${Consts.CATEGORY.get(item.categoryIdOne)}</p>
-                                        <p class="pt_bi_promo">${Consts.CATEGORY.get(item.categoryIdTwo)}</p>
+                                        <p class="pt_bi_tit">${item.categoryIdOne}</p>
+                                        <p class="pt_bi_promo">${item.categoryIdTwo}</p>
                                     </div>
                                     <div class="item-four-detail-img">
-                                        <a href="${ctx}/Item/view?id=${item.id}"><img src="${ctx}${item.url1}"></a>
+                                        <img src="${ctx}${item.url1}">
                                     </div>
                                 </div>
                             </c:forEach>
@@ -143,17 +146,17 @@
                 <div class="item-class-content">
                     <div class="item-content-top">
                         <div class="item-big-img">
-                            <a href="${ctx}/Item/view?id=${rxItem2.id}"><img src="${ctx}${rxItem2.url1}"></a>
+                            <img src="${ctx}${rxItem2.url1}" alt="">
                         </div>
                         <div class="item-four-img">
                             <c:forEach items="${rxItemsRight}" var="item" varStatus="l">
                                 <div class="item-four-detail">
                                     <div class="item-four-detail-text">
-                                        <p class="pt_bi_tit">${Consts.CATEGORY.get(item.categoryIdOne)}</p>
-                                        <p class="pt_bi_promo">${Consts.CATEGORY.get(item.categoryIdTwo)}</p>
+                                        <p class="pt_bi_tit">${item.categoryIdOne}</p>
+                                        <p class="pt_bi_promo">${item.categoryIdTwo}</p>
                                     </div>
                                     <div class="item-four-detail-img">
-                                        <a href="${ctx}/Item/view?id=${item.id}"><img src="${ctx}${item.url1}"></a>
+                                        <img src="${ctx}${item.url1}">
                                     </div>
                                 </div>
                             </c:forEach>

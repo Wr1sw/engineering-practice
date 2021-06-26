@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglibs.jsp"%>
+<%@ page import="com.cuit.utils.Consts" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +43,7 @@
 </div>
 <div class="container-full">
     <div class="host-location">
-        全部结果 >
+        全部结果 > ${Consts.CATEGORY.get(item.categoryIdTwo)}
         <span class="host-location-text">${condition}</span>
     </div>
     <div class="item-class-show">
@@ -297,7 +298,7 @@
                                     已有 <span>${data.gmNum}</span>人评价
                                 </div>
                                 <div class="item-show-seller">
-                                    <span>测试旗舰店</span>
+                                    <span>${Consts.CATEGORY.get(data.categoryIdTwo)}</span>旗舰店
                                 </div>
                             </div>
                         </a>
