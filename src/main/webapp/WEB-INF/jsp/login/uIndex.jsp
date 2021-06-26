@@ -76,15 +76,15 @@
             <div class="nav-content">
                 <!-- 幻灯片 -->
                 <div class="slide">
-                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/GoodsPicture/4.jpg"></a>
+                    <a href="#"><img src="${ctx}/static/images/GoodsPicture/4.jpg"></a>
                 </div>
                 <div class="nav-show">
-                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/GoodsPicture/nav_showimg1.jpg"></a></div>
-                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/GoodsPicture/nav_showimg2.jpg"></a></div>
+                    <div class="nav-show-img"><a href="#"><img src="${ctx}/static/images/GoodsPicture/nav_showimg1.jpg"></a></div>
+                    <div class="nav-show-img"><a href="#"><img src="${ctx}/static/images/GoodsPicture/nav_showimg2.jpg"></a></div>
                 </div>
             </div>
             <div>
-                <span><a href="#"><img src="${pageContext.request.contextPath}/static/images/GoodsPicture/fam.png"></a></span>
+                <span><a href="#"><img src="${ctx}/static/images/GoodsPicture/fam.png"></a></span>
             </div>
         </div>
         <!--商品显示区-->
@@ -121,13 +121,13 @@
                 <div class="item-class-head">
                     <span class="item-class-title">电脑数码</span>
                     <ul>
-                        <li><a href="#">电脑馆</a></li>
+                        <li><a href="${ctx}/Item/shoplist?condition=电脑">电脑馆</a></li>
                     </ul>
                 </div>
                 <div class="item-class-content">
                     <div class="item-content-top">
                         <div class="item-big-img">
-                            <img src="${ctx}${rxItem1.url1}">
+                            <a href="${ctx}/Item/view?id=${rxItem1.id}"><img src="${ctx}${rxItem1.url1}"></a>
                         </div>
                         <div class="item-four-img">
                             <c:forEach items="${rxItemsLeft}" var="item" varStatus="l">
@@ -137,7 +137,7 @@
                                         <p class="pt_bi_promo">${Consts.CATEGORY.get(item.categoryIdTwo)}</p>
                                     </div>
                                     <div class="item-four-detail-img">
-                                        <img src="${ctx}${item.url1}">
+                                        <a href="${ctx}/Item/view?id=${item.id}"><img src="${ctx}${item.url1}"></a>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -147,7 +147,7 @@
                 <div class="item-class-content">
                     <div class="item-content-top">
                         <div class="item-big-img">
-                            <img src="${ctx}${rxItem2.url1}" alt="">
+                            <a href="${ctx}/Item/view?id=${rxItem2.id}"><img src="${ctx}${rxItem2.url1}" alt=""></a>
                         </div>
                         <div class="item-four-img">
                             <c:forEach items="${rxItemsRight}" var="item" varStatus="l">
@@ -157,7 +157,7 @@
                                         <p class="pt_bi_promo">${Consts.CATEGORY.get(item.categoryIdTwo)}</p>
                                     </div>
                                     <div class="item-four-detail-img">
-                                        <img src="${ctx}${item.url1}">
+                                        <a href="${ctx}/Item/view?id=${item.id}"><img src="${ctx}${item.url1}"></a>
                                     </div>
                                 </div>
                             </c:forEach>
