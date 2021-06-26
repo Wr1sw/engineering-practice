@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
 </head>
 <body>
 <!--顶部导航栏-->
-<%@include file="Head.jsp"%>
+<%@include file="../Head.jsp"%>
 <!--搜索框-->
 <div class="search">
     <div class="search-body">
@@ -44,15 +44,15 @@
         <p>请选择支付方式</p>
     </div>
     <div class="pay-qr">
-        <div><img src="../static/images/qr.svg" alt=""></div>
-        <div style="margin-left: 100px"><img src="../static/images/qr2.svg" alt=""></div>
+        <div><img src="${ctx}/static/images/pay/qr.svg" alt=""></div>
+        <div style="margin-left: 100px"><img src="${ctx}/static/images/pay/qr2.svg" alt=""></div>
     </div>
     <div class="pay-btn">
-        <a href="WeChatSuccess.jsp" class="btn btn-danger btn-lg" style="margin-left: 15px">微信支付</a>
-        <a href="ALiPay.jsp" class="btn btn-danger btn-lg" style="margin-left: 182px">支付宝支付</a>
+        <a href="${ctx}/itemOrder/paySuccess?choice=1" class="btn btn-danger btn-lg" style="margin-left: 15px">微信支付</a>
+        <a href="${ctx}/itemOrder/paySuccess?choice=2" class="btn btn-danger btn-lg" style="margin-left: 182px">支付宝支付</a>
     </div>
 </div>
 <!-- 底部 -->
-<%@include file="Footer.jsp"%>
+<%@include file="../Footer.jsp"%>
 </body>
 </html>
