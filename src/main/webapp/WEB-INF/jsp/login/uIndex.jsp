@@ -1,6 +1,7 @@
 <%@ page import="com.cuit.utils.StringUtils" %>
 <%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
  <%@include file="/common/taglibs.jsp"%>
+<%@ page import="com.cuit.utils.Consts" %>
 <!DOCTYPE html>
 <html lang="en">
 <%
@@ -75,15 +76,15 @@
             <div class="nav-content">
                 <!-- 幻灯片 -->
                 <div class="slide">
-                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/4.jpg"></a>
+                    <a href="#"><img src="${pageContext.request.contextPath}/static/images/GoodsPicture/4.jpg"></a>
                 </div>
                 <div class="nav-show">
-                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/nav_showimg1.jpg"></a></div>
-                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/nav_showimg2.jpg"></a></div>
+                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/GoodsPicture/nav_showimg1.jpg"></a></div>
+                    <div class="nav-show-img"><a href="#"><img src="${pageContext.request.contextPath}/static/images/GoodsPicture/nav_showimg2.jpg"></a></div>
                 </div>
             </div>
             <div>
-                <span><a href="#"><img src="${pageContext.request.contextPath}/static/images/fam.png"></a></span>
+                <span><a href="#"><img src="${pageContext.request.contextPath}/static/images/GoodsPicture/fam.png"></a></span>
             </div>
         </div>
         <!--商品显示区-->
@@ -132,8 +133,8 @@
                             <c:forEach items="${rxItemsLeft}" var="item" varStatus="l">
                                 <div class="item-four-detail">
                                     <div class="item-four-detail-text">
-                                        <p class="pt_bi_tit">${item.categoryIdOne}</p>
-                                        <p class="pt_bi_promo">${item.categoryIdTwo}</p>
+                                        <p class="pt_bi_tit">${Consts.CATEGORY.get(item.categoryIdOne)}</p>
+                                        <p class="pt_bi_promo">${Consts.CATEGORY.get(item.categoryIdTwo)}</p>
                                     </div>
                                     <div class="item-four-detail-img">
                                         <img src="${ctx}${item.url1}">
@@ -152,8 +153,8 @@
                             <c:forEach items="${rxItemsRight}" var="item" varStatus="l">
                                 <div class="item-four-detail">
                                     <div class="item-four-detail-text">
-                                        <p class="pt_bi_tit">${item.categoryIdOne}</p>
-                                        <p class="pt_bi_promo">${item.categoryIdTwo}</p>
+                                        <p class="pt_bi_tit">${Consts.CATEGORY.get(item.categoryIdOne)}</p>
+                                        <p class="pt_bi_promo">${Consts.CATEGORY.get(item.categoryIdTwo)}</p>
                                     </div>
                                     <div class="item-four-detail-img">
                                         <img src="${ctx}${item.url1}">
