@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
 </head>
 <body>
     <!--顶部导航栏-->
-    <%@include file="Head.jsp"%>
+    <%@include file="../Head.jsp"%>
     <!--搜索框-->
     <div class="search">
         <div class="search-body">
@@ -42,10 +42,10 @@
     <!-- 支付提示 -->
     <div class="pay-box">
         <div class="pay-qr-success">
-            <img src="../static/images/wechatpay.svg" alt="">支付成功!
+            <img src="${ctx}/static/images/pay/wechatpay.svg" alt="">支付成功!
         </div>
     </div>
     <!-- 底部 -->
-    <%@include file="Footer.jsp"%>
+    <%@include file="../Footer.jsp"%>
 </body>
 </html>
