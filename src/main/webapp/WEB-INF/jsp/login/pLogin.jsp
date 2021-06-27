@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <a href="${ctx}/login/uLogin" class="card-title">用户名登录</a>&nbsp;&nbsp;&nbsp;
                         <a href="${ctx}/login/pLogin" class="card-title">手机登录</a>
-                        <form id="f1">
+                        <form id="f1" name="form1">
                             <div class="form-group">
                                 <label for="phoneNumber"></label>
                                 <input id="phoneNumber" type="text" class="form-control" name="Phone" value="" placeholder="手机号码" onblur="CheckPhone();" required autofocus>
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label for="securityCode"></label>
                                 <input id="securityCode" type="text"  class="form-control" name="securityCode" placeholder="验证码" >
-                                <div align="left">
+                                <div align="right">
                                     <a href="javascript:GetVerifyCode();" class="btn-link" >获取验证码</a>
                                 </div>
                             </div>
@@ -61,29 +61,28 @@
         }
     }
     var code;
+    var falg;
     function GetVerifyCode(){
         $.ajax({
             type:"POST",
             data:$('#f1').serialize(),
             url:"http://47.107.33.121:9090/Sendtest",
             success:function (data){
-                alert("11111");
-                var result = JSON.parse(data);
-                if(result.msg == "ok"){
+                if(data.msg != "ok"){
                     alert("系统错误");
                 }else{
-                    alert("24536346");
-                    console.log(result.code);
-                    code = result.code;
+                    code = data.code;
+                    falg=$("#phoneNumber").val();
                 }
             }
         });
     }
     function Login(){
         if(code == $("#securityCode").val()){
-            window.location.href = "${ctx}/login/phone?phone="+$("#phoneNumber").val();
+            form1.action = "${ctx}/login/telPhone";
+            form1.submit();
         }else{
-            alert("验证码错误");
+          alert("验证码错误");
         }
     }
 </script>
