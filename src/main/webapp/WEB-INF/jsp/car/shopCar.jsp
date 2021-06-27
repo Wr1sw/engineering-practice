@@ -45,8 +45,7 @@
 <!----------------------购物车列表区-------------------------->
 <div class="Shopping_Car comWidth">
     <div class="shoppingcar_sum"> <span class="sj">
-    <input type="checkbox" name="allcheck" value="allcheck"/>
-    全选</span>
+    <input type="checkbox" name="all" id="allCheck" value="allcheck"/>全选</span>
         <ul class="fl">
             <li>商品信息</li>
         </ul>
@@ -62,9 +61,7 @@
     <div class="shop_box comWidth" id="${data.id}">
             <div class="shop_product">
                 <input type="checkbox" name="checkbox" value="${data.total}" id="c${data.id}" onclick="Cal(1);" class="fl"/>
-
                 <img src="${ctx}${data.item.url1}" alt="" class="fl" width="90" height="90"/>
-
                 <div class="shoppro_des bh fl"> ${data.item.ms}</div>
                 <div class="shoppro_price fr"> <span class="bh">已入收藏夹</span><br />
                     <span class="bh"><a href="javascript:Delete(${data.id})">删除</a></span> </div>
@@ -96,115 +93,5 @@
 <!-- 底部 -->
 <%@include file="../Footer.jsp"%>
 </body>
-<script>
-
-    function Add(id){
-        $.ajax({
-            url:"${ctx}/car/addNum",
-            type:"POST",
-            data: {"id":id,"condition":1},
-            success: function (result){
-                var car = JSON.parse(result);
-                $("#a"+id).html(car.total.toFixed(2));
-                $("#b"+id).val(car.num);
-                $("#c"+id).val(car.total.toFixed(2));
-                Cal(0);
-            }
-        });
-    }
-    function Reduce(id){
-        if($("#b"+id).val()<=1){
-            alert("商品的购买数量不能小于1");
-        }else{
-            $.ajax({
-                url:"${ctx}/car/addNum",
-                type:"POST",
-                data: {"id":id,"condition":0},
-                async:false,
-                success: function (result){
-                    var car = JSON.parse(result);
-                    $("#a"+id).html(car.total.toFixed(2));
-                    $("#b"+id).val(car.num);
-                    $("#c"+id).val(car.total.toFixed(2));
-                    Cal(0);
-                }
-            });
-        }
-    }
-    function Delete(id){
-        if($("#money").text() != 0){
-            alert("正在结算不可删除");
-        }else{
-            alert("确定要删除?");
-            $.get("${ctx}/car/delete?id="+id,
-                function (data){
-                    var rs = JSON.parse(data);
-                    if(rs.result){
-                        alert("删除成功");
-                        $("#"+id).remove();
-                    }
-                }
-
-            );
-        }
-
-    }
-    /*
-        Cal()函数用到的全局变量
-    */
-    var money = 0.0;
-    var temp = 0.0;
-    var flag = 0;
-    var num = 0;
-
-    /**
-     * create by Miracle
-     * function: 实现点击商品，结算的功能
-     * @constructor
-     */
-    function Cal(condition){
-        var Money = document.getElementById("money");
-        var Num = document.getElementById("num");
-        var count = 0.0;
-        var box = document.getElementsByName("checkbox");
-        for(var i = 0; i < box.length; i++){
-            if(box[i].checked && flag ==0){
-                temp += parseFloat(box[i].value);
-            }else if(box[i].checked && flag !=0){
-                count += parseFloat(box[i].value);
-            }
-        }
-            if(flag == 0 && condition == 0){//第一次点击—+，
-
-            }else if (flag == 0 && condition != 0) {//第一次购物
-                money += temp;
-                flag =1;
-                num += 1;
-            }else if(flag == 1 && condition != 0){//第n次结算商品
-                num = count > temp ? ++num : --num;
-                money += count - temp;
-                temp = count;
-            }else if(flag == 1 && condition == 0){
-                money += count - temp;
-                temp = count;
-            }
-            Money.innerHTML = money.toFixed(2);
-            Num.innerHTML = num.toFixed(2);
-
-    }
-
-    function Pay(){
-        if($("#money").text() != 0){
-            var s = "";
-            $('input:checkbox[name=checkbox]:checked').each(function(){
-                var ID =  $(this).attr("ID"); //使用attr属性获取ID 或者其他的属性
-                s += ID+",";
-            });
-            window.location.href = "${ctx}/itemOrder/orderDetail?ids="+s;
-        }else {
-            alert("请您选择购买的商品");
-        }
-    }
-
-</script>
+<script type="text/javascript" src="${ctx}/static/js/carorder.js"></script>
 </html>
