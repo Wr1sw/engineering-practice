@@ -45,9 +45,7 @@ public class ItemOrderController extends BaseController {
     @RequestMapping("/my")
     public String my(Model model, HttpServletRequest request){
         int Id = (Integer) request.getSession().getAttribute(Consts.USERID);
-        System.out.println("================================================"+Id+"======================================");
         User user = userService.getById(Id);
-        System.out.println("================================================"+user+"======================================");
         String sql = "select * from item_order where user_id = "+Id ;
 
         ArrayList<ItemOrder> itemOrders = (ArrayList<ItemOrder>) itemOrderService.listBySqlReturnEntity(sql);
@@ -101,7 +99,6 @@ public class ItemOrderController extends BaseController {
         JSONObject json = new JSONObject();
         String temp = request.getParameter("data");
         String []data = temp.split(";");
-        System.out.println("==============================================="+data.length+"+++++++++++++++++++++++++++++++++");
         ItemOrder order ;
         for(String s : data){
             order = new ItemOrder();
