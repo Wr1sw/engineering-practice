@@ -26,7 +26,7 @@
 .shoppingcar_sum li{
     display:inline-block;
     float:left;
-    width:135px;
+    width:145px;
     height:100%;
     line-height:50px;}
 .sj{margin-left:20px;}
@@ -64,7 +64,7 @@
     text-decoration:underline;}
 .shoppro_des{
     height:80px;
-    width:180px;
+    width:270px;
     margin-left:15px;}
 .shoppro_size{
     position:absolute;
