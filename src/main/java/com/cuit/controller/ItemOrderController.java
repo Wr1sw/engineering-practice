@@ -37,10 +37,25 @@ public class ItemOrderController extends BaseController {
     private ItemService itemService;
 
     /**
+     * Create by wys
+     * modified by Miracle
+     * function: 查看我的订单记录
      * 我的订单
      */
     @RequestMapping("/my")
-    public String my(){
+    public String my(Model model, HttpServletRequest request){
+        int Id = (Integer) request.getSession().getAttribute(Consts.USERID);
+        System.out.println("================================================"+Id+"======================================");
+        User user = userService.getById(Id);
+        System.out.println("================================================"+user+"======================================");
+        String sql = "select * from item_order where user_id = "+Id ;
+
+        ArrayList<ItemOrder> itemOrders = (ArrayList<ItemOrder>) itemOrderService.listBySqlReturnEntity(sql);
+        for(ItemOrder order: itemOrders){
+            order.setTotal(itemService.getById(order.getItemId()).getName());
+        }
+        model.addAttribute("user",user);
+        model.addAttribute("orders",itemOrders);
         return "itemOrder/my";
     }
 
