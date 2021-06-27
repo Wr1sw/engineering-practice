@@ -39,14 +39,25 @@ public class ItemController extends BaseController {
     @RequestMapping("/shoplist")
     public String shoplist(Item item, String condition, Model model) {
         String sql = "select * from item where isDelete=0";
-        String sqlForAds = "select * from item where isDelete=0 and zk is not null order by gmNum desc limit 6";
+        String sqlForAds = "select * from item where isDelete=0 and zk is not null order by gmNum desc limit ";
         if(!isEmpty(item.getCategoryIdTwo())) sql+="  and category_id_two=" + item.getCategoryIdTwo();
         if(!isEmpty(condition)) {
             sql+= " and ms like '%" + condition + "%'";
             model.addAttribute("condition",condition);
         }
         Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
-        //        Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
+        int pagersSize = pagers.getDatas().size();
+        int size = 0;
+        if(pagersSize>=13){
+            size = 6;
+        }else{
+            if(pagersSize % 4 == 0){
+                size = pagersSize / 4 + 1;
+            }else{
+                size = (int)(pagersSize / 4) + 2;
+            }
+        }
+        sqlForAds += size;
         List<Item> ads = itemService.listBySqlReturnEntity(sqlForAds);
         model.addAttribute("ads",ads);
         model.addAttribute("pagers",pagers);
