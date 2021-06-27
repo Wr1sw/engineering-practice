@@ -599,6 +599,8 @@
 		cursor: pointer;
 	}
 	.item-detail-big-img img{
+		width: 350px;
+		height: 350px;
 		width: 100%;
 	}
 
@@ -616,6 +618,7 @@
 		cursor: pointer;
 	}
 	.item-detail-img-small img{
+		height: 68px;
 		width: 100%;
 	}
 	/*商品选购详情*/
@@ -623,9 +626,10 @@
 		display: flex;
 		flex-direction: column;
 		margin-left: 50px;
+		width: 750px;
 	}
 	.item-detail-title p{
-		color: #666;
+		color: #333;
 		font-size: 20px;
 	}
 	.item-detail-express{
@@ -653,7 +657,7 @@
 		flex-direction: column;
 	}
 	.item-price-title{
-		color: #999999;
+		color: #333333;
 		font-size: 14px;
 		margin-right: 15px;
 	}
@@ -690,7 +694,7 @@
 	}
 	.item-select-title{
 		width: 120px;
-		color: #999999;
+		color: #333333;
 		font-size: 18px;
 		margin-right: 15px;
 	}

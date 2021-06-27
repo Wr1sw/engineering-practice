@@ -106,10 +106,10 @@
                     </div>
                 </div>
             </div>
-            <!-- 选择颜色 -->
+            <!-- 选择套餐-->
             <div class="item-select">
                 <div class="item-select-title">
-                    <p>套餐选择</p>
+                    <p>套&nbsp;餐&nbsp;选&nbsp;择</p>
                 </div>
                 <div class="item-select-column">
                     <div class="item-select-row">
