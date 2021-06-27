@@ -115,7 +115,13 @@ public class CarController {
     @ResponseBody
     public String Delete(HttpServletRequest request){
         JSONObject jsonObject = new JSONObject();
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = 0;
+        String s = request.getParameter("id");
+        if(s.charAt(0)=='c'){
+            id = Integer.parseInt(s.substring(1));
+        }else {
+            id = Integer.parseInt(s);
+        }
         carService.deleteById(id);
         jsonObject.put("result",true);
         return jsonObject.toJSONString();
