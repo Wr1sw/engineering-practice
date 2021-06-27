@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Seventeen's love
-  Date: 2021/6/26
-  Time: 17:10
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE html>
@@ -27,27 +20,22 @@
                 </div>
                 <div class="card fat" >
                     <div class="card-body">
-                        <%--<h4 class="card-title" align="center">UserLogin</h4>--%>
                         <a href="${ctx}/login/uLogin" class="card-title">用户名登录</a>&nbsp;&nbsp;&nbsp;
                         <a href="${ctx}/login/pLogin" class="card-title">手机登录</a>
-                        <form method="POST">
-
+                        <form id="f1">
                             <div class="form-group">
-                                <label for="phonenumber"></label>
-
-                                <input id="phonenumber" type="text" class="form-control" name="phonenumber" value="" placeholder="手机号码" required autofocus>
+                                <label for="phoneNumber"></label>
+                                <input id="phoneNumber" type="text" class="form-control" name="Phone" value="" placeholder="手机号码" onblur="CheckPhone();" required autofocus>
                             </div>
-
                             <div class="form-group">
-                                <label for="securitycode"></label>
-                                <input id="securitycode" type="text" class="form-control" name="securitycode" placeholder="验证码" >
-                                <div align="right">
-                                    <a href="javascript:void(0);" class="btn-link" >获取验证码</a>
+                                <label for="securityCode"></label>
+                                <input id="securityCode" type="text"  class="form-control" name="securityCode" placeholder="验证码" >
+                                <div align="left">
+                                    <a href="javascript:GetVerifyCode();" class="btn-link" >获取验证码</a>
                                 </div>
                             </div>
-
                             <div class="form-group no-margin">
-                                <button type="submit" class="btn btn-primary btn-block">登录</button>
+                                <button class="btn btn-primary btn-block" onclick="Login();">登录</button>
                             </div>
                             <div class="margin-top20 text-center">
                                 没有账号？ <a href="../signup.jsp">创建</a>
@@ -64,18 +52,39 @@
 <script src="${ctx}/static/js/bootstrap.min.js"></script>
 <script src="${ctx}/static/js/my-login.js"></script>
 </body>
-<%--<script>
-    $('form').submit(function () {
-        var userName = $('input[name=username]').val();
-        var passWord = $('input[name=password]').val();
-        if (userName.length == 0) {
-            alert("用户名不能为空");
-            return false;
+<script>
+    function CheckPhone(){
+        var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
+        var phoneNum = $("#phoneNumber").val();
+        if(!myreg.test(phoneNum)){
+            alert("手机号输入错误");
         }
-        if (passWord.length == 0) {
-            alert("密码为空");
-            return false;
+    }
+    var code;
+    function GetVerifyCode(){
+        $.ajax({
+            type:"POST",
+            data:$('#f1').serialize(),
+            url:"http://47.107.33.121:9090/Sendtest",
+            success:function (data){
+                alert("11111");
+                var result = JSON.parse(data);
+                if(result.msg == "ok"){
+                    alert("系统错误");
+                }else{
+                    alert("24536346");
+                    console.log(result.code);
+                    code = result.code;
+                }
+            }
+        });
+    }
+    function Login(){
+        if(code == $("#securityCode").val()){
+            window.location.href = "${ctx}/login/phone?phone="+$("#phoneNumber").val();
+        }else{
+            alert("验证码错误");
         }
-    });
-</script>--%>
+    }
+</script>
 </html>
