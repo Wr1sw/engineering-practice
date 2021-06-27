@@ -109,7 +109,7 @@
             <!-- 选择颜色 -->
             <div class="item-select">
                 <div class="item-select-title">
-                    <p>选择颜色</p>
+                    <p>套餐选择</p>
                 </div>
                 <div class="item-select-column">
                     <div class="item-select-row">
@@ -118,7 +118,7 @@
                                 <img src="${ctx}${item.url1}" alt="">
                             </div>
                             <div class="item-select-intro">
-                                <p>&nbsp; 来&nbsp;图&nbsp;&nbsp;定&nbsp;制 &nbsp;</p>
+                                <p>【官方标配】</p>
                             </div>
                         </div>
                         <div class="item-select-box">
@@ -126,7 +126,7 @@
                                 <img src="${ctx}${item.url3}" alt="">
                             </div>
                             <div class="item-select-intro">
-                                <p>Mate40pro--黄</p>
+                                <p>【爆款一】</p>
                             </div>
                         </div>
                         <div class="item-select-box">
@@ -134,7 +134,7 @@
                                 <img src="${ctx}${item.url5}" alt="">
                             </div>
                             <div class="item-select-intro">
-                                <p>Mate40pro--绿</p>
+                                <p>【爆款二】</p>
                             </div>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                                 <img src="${ctx}${item.url5}" alt="">
                             </div>
                             <div class="item-select-intro">
-                                <p>Mate40pro--蓝</p>
+                                <p>${item.name}基础版</p>
                             </div>
                         </div>
                         <div class="item-select-box">
@@ -152,7 +152,7 @@
                                 <img src="${ctx}${item.url2}" alt="">
                             </div>
                             <div class="item-select-intro">
-                                <p>Mate40pro--红</p>
+                                <p>${item.name}豪华版</p>
                             </div>
                         </div>
                         <div class="item-select-box">
@@ -160,7 +160,7 @@
                                 <img src="${ctx}${item.url1}" alt="">
                             </div>
                             <div class="item-select-intro">
-                                <p>Mate40pro+黄</p>
+                                <p>【人气套餐】</p>
                             </div>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
                                 <img src="${ctx}${item.url4}" alt="">
                             </div>
                             <div class="item-select-intro">
-                                <p>Mate40pro+绿</p>
+                                <p>【店长推荐】</p>
                             </div>
                         </div>
                         <div class="item-select-box">
@@ -178,7 +178,7 @@
                                 <img src="${ctx}${item.url5}" alt="">
                             </div>
                             <div class="item-select-intro">
-                                <p>Mate40pro+蓝</p>
+                                <p>【24期分期】</p>
                             </div>
                         </div>
                         <div class="item-select-box">
@@ -186,7 +186,7 @@
                                 <img src="${ctx}${item.url3}" alt="">
                             </div>
                             <div class="item-select-intro">
-                                <p>Mate40pro+红</p>
+                                <p>【618专享】</p>
                             </div>
                         </div>
                     </div>
@@ -220,5 +220,11 @@
             }
         });
     }
+    // 图片轮播
+    $('.item-detail-img-small img').hover(function () {
+        $('.item-detail-big-img img').attr('src', $(this).attr('src'));
+    });
+
+
 </script>
 </html>
