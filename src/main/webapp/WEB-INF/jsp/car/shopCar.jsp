@@ -42,7 +42,7 @@
 <!----------------------购物车列表区-------------------------->
 <div class="Shopping_Car comWidth">
     <div class="shoppingcar_sum"> <span class="sj">
-    <input type="checkbox" name="allcheck" value="allcheck"/>
+    <input type="checkbox" name="allcheck" value="allcheck" id="allcheck"/>
     全选</span>
         <ul class="fl">
             <li>商品信息</li>
@@ -55,10 +55,10 @@
         </ul>
     </div>
 
-    <c:forEach items="${list}" var="data" varStatus="l">
     <div class="shop_box comWidth" id="${data.id}">
+    <c:forEach items="${list}" var="data" varStatus="l">
             <div class="shop_product">
-                <input type="checkbox" name="checkbox" value="${data.total}" id="c${data.id}" onclick="Cal(1);" class="fl"/>
+                <input type="checkbox" name="checkbox" value="${data.total}" id="c${data.id}" onclick="Cal(1);" class="check fl"/>
 
                 <img src="${ctx}${data.item.url1}" alt="" class="fl" width="90" height="90"/>
 
@@ -74,12 +74,12 @@
                     <div class="plus fl"><input type="button" value="+" onclick="Add(${data.id})"></div>
                 </div>
                 <div class="shoppro_price fr">
-                    <div class="Carnum1">￥<fmt:formatNumber value="${data.price+data.price*0.1}" type="currency" pattern="0.00"/></div>
-                    <div class="Carnum2" >￥<fmt:formatNumber value="${data.price}" type="currency" pattern="0.00"/></div>
+                    <div class="Carnum1"><fmt:formatNumber value="${data.price+data.price*0.1}" type="currency" pattern="0.00"/></div>
+                    <div class="Carnum2" ><fmt:formatNumber value="${data.price}" type="currency" pattern="0.00"/></div>
                 </div>
             </div>
-    </div>
     </c:forEach>
+    </div>
 
     <div class="shoppingcar_acc">
         <div class="shoppingcar_accright fr">
@@ -94,6 +94,38 @@
 <%@include file="../Footer.jsp"%>
 </body>
 <script>
+
+    $('#allcheck').click(function(){
+        if(document.getElementById("allcheck").checked){
+            var oneCheck = $(".check");
+            for(var i=0;i<oneCheck.length;i++){
+                oneCheck[i].checked = true;
+                oneCheck.eq(i).attr("checked","checked");
+            }
+            setPrice();
+        }else{
+            var oneCheck = $(".check");
+            for(var i=0;i<oneCheck.length;i++){
+                oneCheck[i].checked = false;
+                oneCheck.eq(i).attr("checked",false);
+            }
+            // 反选总价清零
+            $('#money').html(0.00);
+            $('#num').html(0.00);
+        }
+    });
+
+    function setPrice(){
+        var total = 0.00;
+        var num = 0;
+        var checkTrue = $(".Carnum1");
+        for(var i=0;i<checkTrue.length;i++){
+            total = parseFloat(total) + parseFloat(checkTrue.eq(i).next("div").html());
+            num += 1;
+        }
+        $('#money').html(total);
+        $('#num').html(num);
+    }
 
     function Add(id){
         $.ajax({
