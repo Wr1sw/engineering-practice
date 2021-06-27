@@ -93,26 +93,5 @@
     <!--底部-->
     <%@include file="../Footer.jsp"%>
 </body>
-<script>
-    function Account(){
-        var s = "";
-        $('input:hidden[name=car]').each(function(){
-            var value =  $(this).attr("value"); //使用attr属性获取ID 或者其他的属性
-            s += value+";";
-        });
-        $.ajax({
-            url:"${ctx}/itemOrder/addBuyRecord",
-            type: "POST",
-            data: {"data":s},
-            success: function (data){
-                var res = JSON.parse(data);
-                if(res.result == 1){
-                    window.location.href = "${ctx}/itemOrder/account";
-                }else{
-                    alert("订单保存失败");
-                }
-            }
-        });
-    }
-</script>
+<script type="text/javascript" src="${ctx}/static/js/carorder.js"></script>
 </html>
