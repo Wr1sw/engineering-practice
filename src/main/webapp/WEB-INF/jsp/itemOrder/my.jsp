@@ -30,38 +30,27 @@
         <div id="vipRight">
             <div style="width: 938px;border:1px solid #ddd;background: #fff;">
                 <div class="width100 hidden_yh" style="height: 74px;line-height: 74px;background: #f5f8fa;border-bottom: 1px solid #ddd;" id="navLt">
-                    <span class="left_yh font24 width20 tcenter cursor onHover onorange slect">全部订单</span>
-                    <span class="left_yh font24 width20 tcenter cursor onHover onorange">已取消</span>
-                    <span class="left_yh font24 width20 tcenter cursor onHover onorange">待发货</span>
+                    <span class="left_yh font24 width20 tcenter cursor onHover onorange slect" style="margin-right: 15%">全部订单</span>
+                    <span class="left_yh font24 width20 tcenter cursor onHover onorange"></span>
+                    <span class="left_yh font24 width20 tcenter cursor onHover onorange">运输中</span>
                     <span class="left_yh font24 width20 tcenter cursor onHover onorange">待收货</span>
                     <span class="left_yh font24 width20 tcenter cursor onHover onorange">已收货</span>
                 </div>
                 <!--全部订单-->
-                <div class="allGoods width100 hidden_yh hhD" style="display: block;">
-
-                </div>
-
-                <!--已取消-->
-                <div class="allGoods width100 hidden_yh hhD" style="display: none;">
-
-                </div>
-
-
-                <!--待发货-->
-                <div class="allGoods width100 hidden_yh hhD" style="display: none;">
-
-                </div>
-
-
-                <!--待收货-->
-                <div class="allGoods width100 hidden_yh hhD" style="display: none;">
-
-                </div>
-
-                <!--已收货-->
-                <div class="allGoods width100 hidden_yh hhD" style="display: none;">
-
-                </div>
+                <c:forEach items="${orders}" var="order" varStatus="l">
+                    <div class="allGoods width100 hidden_yh hhD" style="display: block;">
+                        <span style="width: 40%; font-family: 'Tahoma'; font-size: 18px; margin-left: 10px">${order.total} &nbsp;&nbsp; ${user.userName} &nbsp;&nbsp; ${user.phone} </span>
+                        <c:if test="${order.status == 1}">
+                            <span class="glyphicon glyphicon-road" align ="left" style="color: #7f7aff;  width: 40%; margin-left: 12%"></span>
+                        </c:if>
+                        <c:if test="${order.status == 2}">
+                            <span class="glyphicon glyphicon-inbox" align = "center" style="color: #39e7ff; width: 42%; margin-left: 12%"></span>
+                        </c:if>
+                        <c:if test="${order.status == 2}">
+                            <span class="glyphicon glyphicon-ok" align = "right" style="color: #1bff2f; width: 42%; margin-left: 12%"></span>
+                        </c:if>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
