@@ -13,6 +13,7 @@
         </li>
         <li><a href="#">客服服务</a></li>
         <li><a href="#">商城会员</a></li>
+        <li><a href="${ctx}/user/notice">公告</a></li>
         <c:if test="${userId!=null}">
             <li class="nav-pull-down my-shop"><a href="${ctx}/Trail/viewUser">个人中心</a></li>
             <li class="login-signup"><a href="${ctx}/car/findBySql">我的购物车</a>
