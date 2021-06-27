@@ -47,7 +47,6 @@ public class ItemOrderController extends BaseController {
         int Id = (Integer) request.getSession().getAttribute(Consts.USERID);
         User user = userService.getById(Id);
         String sql = "select * from item_order where user_id = "+Id ;
-
         ArrayList<ItemOrder> itemOrders = (ArrayList<ItemOrder>) itemOrderService.listBySqlReturnEntity(sql);
         for(ItemOrder order: itemOrders){
             order.setTotal(itemService.getById(order.getItemId()).getName());
