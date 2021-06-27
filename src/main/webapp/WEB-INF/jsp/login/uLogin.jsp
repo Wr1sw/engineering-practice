@@ -4,110 +4,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="../static/js/jquery.js"></script>
+    <script src="${ctx}/static/js/jquery.js"></script>
+    <meta name="author" content="Kodinger">
+<%--    此处的网址链接，由Miracle添加，解决了一个依赖问题，建议测试  --%>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/my-login.css">
     <title>登录框</title>
-    <style>
-        *{
-            margin: 0px;
-            padding: 0px;
-        }
-        body{
-            background-image:url(${pageContext.request.contextPath}/static/images/login.jpg);
-            background-size:100% 150%;
-            background-color: #eee;
-        }
-        .container{
-            width: 380px;
-            height: 300px;
-            margin: 0px auto;
-            margin-right:300px;
-            margin-top: 200px;
-            border-radius: 8px;
-            background-color: #fff;
-        }
-        .header{
-            width: 100%;
-            height: 50px;
-            background-color: #ff4500;
-            font-size: 26px;
-            color: #fff;
-            line-height: 50px;
-            text-align: center;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-        .form-body{
-            margin-top: 48px;
-        }
-        label{
-            width: 82px;
-            margin-left: 18px;
-        }
-        .form-group{
-            margin-top: 18px;
-        }
-        .form-input{
-            height: 33px;
-            width: 260px;
-            padding-left: 8px;
-            background-color: #F0FFFF;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .btn{
-            margin-top: 30px;
-        }
-        .btn a{
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .form-btn{
-            height: 38px;
-            width: 150px;
-            color:#fff;
-            border: 1px solid #eee;
-            border-radius: 5px;
-            box-shadow: 0px 2px 3px #ccc;
-        }
-        .form-btn-primary{
-            margin-left: 28px;
-            background-color: #f4a460;
-        }
-        .form-btn-warning{
-            margin-left: 15px;
-            background-color: #f4a460;
-        }
-    </style>
 </head>
-<body>
-<div class="container">
-    <div class="header">
-        <p>登陆</p>
-    </div>
-    <div class="form-body">
-        <form action=${ctx}/login/uLoginTo method="post">
-            <div class="form-group">
-                <label >用户名:</label>
-                <input type="text" class="form-input" name="userName">
-            </div>
+<body class="my-login-page">
+<section class="h-100">
+    <div class="container h-100" >
+        <div class="row justify-content-md-center h-100" >
+            <div class="card-wrapper" >
+                <div class="brand">
+                    <img src="${ctx}/static/images/user.jpg">
+                </div>
+                <div class="card fat" >
+                    <div class="card-body">
+                        <a href="${ctx}/login/uLogin" class="card-title">用户名登录</a>&nbsp;&nbsp;&nbsp;
+                        <a href="${ctx}/login/pLogin" class="card-title">手机登录</a>
+                        <form method="POST" action="${ctx}/login/uLoginTo">
+                            <div class="form-group">
+                                <label for="username"></label>
+                                <input id="username" type="text" class="form-control" name="userName" value="" placeholder="用户名" required autofocus>
+                            </div>
 
-            <div class="form-group">
-                <label >密&nbsp;&nbsp;&nbsp;码:</label>
-                <input type="password" class="form-input" name="passWord">
-            </div>
+                            <div class="form-group">
+                                <label for="password"></label>
+                                <input id="password" type="password" class="form-control" name="passPord" placeholder="密码" required data-eye>
+                            </div>
 
-            <div class="btn">
-                <a href="../Trail.jsp"><button class="form-btn form-btn-primary " type="submit">登录</button></a>
-                <a href="../signup.jsp"><button class="form-btn form-btn-warning " type="submit">注册</button></a>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="remember"> 记住密码
+                                </label>
+                            </div>
+                            <div class="form-group no-margin">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    登录
+                                </button>
+                            </div>
+                            <div class="margin-top20 text-center">
+                                没有账号? <a href="../signup.jsp">创建</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</section>
+<script src="${ctx}/static/js/jquery.min.js"></script>
+<script src="${ctx}/static/js/bootstrap.min.js"></script>
+<script src="${ctx}/static/js/my-login.js"></script>
 </body>
-<script>
+<<script>
     $('form').submit(function () {
-        var userName = $('input[name=userName]').val();
-        var passWord = $('input[name=passWord]').val();
+        var userName = $('input[name=username]').val();
+        var passWord = $('input[name=password]').val();
         if (userName.length == 0) {
             alert("用户名不能为空");
             return false;
