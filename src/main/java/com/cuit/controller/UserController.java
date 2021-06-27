@@ -55,6 +55,12 @@ public class UserController extends BaseController {
         return "redirect:/user/view";
     }
 
+    /**
+     * Create by Miracle
+     * function :做密码修改的验证
+     * @param request
+     * @return
+     */
     @RequestMapping("/doVerify")
     @ResponseBody
     public String doVerify(HttpServletRequest request){
@@ -69,5 +75,15 @@ public class UserController extends BaseController {
             json.put("result",0);
         }
         return json.toJSONString();
+    }
+
+    /**
+     * Create by Miracle
+     * function: 查看公告
+     * @return
+     */
+    @RequestMapping("/notice")
+    public String Notice(){
+        return "user/affiche";
     }
 }
