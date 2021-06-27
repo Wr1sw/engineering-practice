@@ -151,7 +151,6 @@ public class LoginController {
      */
     @RequestMapping("/uLogin")
     public String uLogin(){
-
         return "login/uLogin";
     }
 
@@ -160,6 +159,7 @@ public class LoginController {
      */
     @RequestMapping("/uLoginTo")
     public String uLoginTo(User u, HttpServletRequest request) {
+
         User byEntity = userService.getByEntity(u);
         if(byEntity == null) {
             return "redirect:/login/res";
@@ -189,8 +189,27 @@ public class LoginController {
     public String pass() {
         return "login/pass";
     }
+
     /**
-     * 执行修改密码
+     * create by Miracle
+     * function: 通过手机验证登陆
+     * @param request
+     * @return
      */
+    @RequestMapping("/phone")
+    public String LoginByPhone(HttpServletRequest request){
+        String phone = request.getParameter("phone");
+        String sql = "select * from  user where phone="+phone;
+        User user = userService.getBySqlReturnEntity(sql);
+        request.getSession().setAttribute("role", 2);
+        request.getSession().setAttribute(Consts.USERNAME, user.getUserName());
+        request.getSession().setAttribute(Consts.USERID, user.getId());
+        return "redirect:/login/uIndex";
+    }
+    @RequestMapping("/pLogin")
+    public String pLogin(){
+        return "login/pLogin";
+    }
+
 
 }
