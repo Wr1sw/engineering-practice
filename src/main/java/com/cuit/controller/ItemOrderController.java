@@ -138,6 +138,7 @@ public class ItemOrderController extends BaseController {
             order.setIsDelete(0);
             order.setStatus(1);
             itemOrderService.insert(order);
+            carService.deleteById(Integer.parseInt(order.getCode()));
         }
         json.put("result",1);
         return json.toJSONString();
