@@ -1,3 +1,4 @@
+<%@ taglib prefix="pa" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglibs.jsp"%>
 <%@ page import="com.cuit.utils.Consts" %>
@@ -209,46 +210,68 @@
         </div>
     </div>
 </div>
+        <div class="page-num">
+            <nav>
+                <ul class="pagination">
+                    <li>
+                        <a>
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <pg:pager url="${ctx}/Item/shoplist" maxIndexPages="5" items="${pagers.total}" maxPageItems="15" export="curPage=pageNumber">
+                        <pg:last>
+                            <li>
+                                共${pagers.total}记录，共${pageNumber}页，
+                            </li>
+                        </pg:last>
+                        <li>
+                            当前第${curPage}页
+                        </li>
+                        <pg:first>
+                    <li>
+                        <a href="${pageUrl}">首页</a>
+                    </li>
 
-<div class="page-num">
-    <nav>
-        <ul class="pagination">
-            <li>
-                <a>
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="active">
-                <a href="#">1</a>
-            </li>
-            <li>
-                <a href="#">2</a>
-            </li>
-            <li>
-                <a href="#">3</a>
-            </li>
-            <li>
-                <a href="#">4</a>
-            </li>
-            <li>
-                <a href="#">5</a>
-            </li>
-            <li>
-                <a href="#">6</a>
-            </li>
-            <li>
-                <a href="#">7</a>
-            </li>
-            <li>
-                <a href="#">8</a>
-            </li>
-            <li>
-                <a href="#">
-                    <span>&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+                        </pg:first>
+                        <pg:prev>
+                    <li>
+                        <a href="${pageUrl}">上一页</a>
+                    </li>
+
+                    </pg:prev>
+                    <pg:pages>
+                        <c:choose>
+                            <c:when test="${curPage eq pageNumber}">
+                                <font color="red">[${pageNumber}]</font>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="${pageUrl}">${pageNumber}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </pg:pages>
+                    <pg:next>
+                    <li>
+                        <a href="${pageUrl}">下一页</a>
+                    </li>
+                    </pg:next>
+                    <pg:last>
+                        <c:choose>
+                            <c:when test="${curPage eq pageNumber}">
+                                <font color="red">尾页</font>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="${pageUrl}">尾页</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </pg:last>
+                    </pg:pager>
+                    <li>
+                        <a href="#">
+                            <span>&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 </div>
 <div class="clearfix"></div>
 <%@include file="../Footer.jsp"%>
