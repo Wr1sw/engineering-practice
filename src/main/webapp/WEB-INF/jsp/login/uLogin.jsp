@@ -18,7 +18,7 @@
         <div class="row justify-content-md-center h-100" >
             <div class="card-wrapper" >
                 <div class="brand">
-                    <img src="${ctx}/static/images/user.jpg">
+                    <img src="${ctx}/static/images/login/user.jpg">
                 </div>
                 <div class="card fat" >
                     <div class="card-body">
