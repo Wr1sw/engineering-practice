@@ -15,9 +15,9 @@
         <li><a href="#">商城会员</a></li>
         <li><a href="${ctx}/user/notice">公告</a></li>
         <c:if test="${userId!=null}">
-            <li class="nav-pull-down my-shop"><a href="${ctx}/Trail/viewUser">个人中心</a></li>
+            <li class="nav-pull-down my-shop"><a href="${ctx}/login/view">个人中心</a></li>
             <li class="login-signup"><a href="${ctx}/car/findBySql">我的购物车</a>
-                <span class="text-color-red"><a href="${ctx}/signup">我的收藏</a></span>
+                <span class="text-color-red"><a href="#">我的收藏</a></span>
             </li>
             <li><a href="${ctx}/login/uTuiChu">退出</a></li><li><a href="#">欢迎您：${userName}</a></li> <b></b>
         </c:if>

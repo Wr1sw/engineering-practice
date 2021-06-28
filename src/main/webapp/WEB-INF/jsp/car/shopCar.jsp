@@ -49,7 +49,7 @@
         <ul class="fl">
             <li>商品信息</li>
         </ul>
-        <ul class="fr">
+        <ul class="fr" >
             <li>单价</li>
             <li>数量</li>
             <li>金额</li>
