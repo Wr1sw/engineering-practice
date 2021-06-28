@@ -192,7 +192,7 @@ function Account(){
         success: function (data){
             var res = JSON.parse(data);
             if(res.result == 1){
-                window.location.href = address+"/itemOrder/account";
+                window.location.href = "/itemOrder/account";
             }else{
                 alert("订单保存失败");
             }
