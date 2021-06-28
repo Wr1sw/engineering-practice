@@ -22,10 +22,10 @@
                     <div class="card-body">
                         <a href="${ctx}/login/uLogin" class="card-title">用户名登录</a>&nbsp;&nbsp;&nbsp;
                         <a href="${ctx}/login/pLogin" class="card-title">手机登录</a>
-                        <form id="f1" name="form1">
+                        <form id="f1" name="form1" method="post">
                             <div class="form-group">
                                 <label for="phoneNumber"></label>
-                                <input id="phoneNumber" type="text" class="form-control" name="Phone" value="" placeholder="手机号码" onblur="CheckPhone();" required autofocus>
+                                <input id="phoneNumber" type="text" class="form-control" name="Phone" value="" placeholder="手机号码" onchange="CheckPhone();" required autofocus>
                             </div>
                             <div class="form-group">
                                 <label for="securityCode"></label>
@@ -63,6 +63,7 @@
     var code;
     var falg;
     function GetVerifyCode(){
+        CheckPhone();
         $.ajax({
             type:"POST",
             data:$('#f1').serialize(),

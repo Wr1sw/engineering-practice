@@ -1,12 +1,8 @@
-<%@ page import="com.cuit.utils.StringUtils" %>
 <%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
  <%@include file="/common/taglibs.jsp"%>
 <%@ page import="com.cuit.utils.Consts" %>
 <!DOCTYPE html>
 <html lang="en">
-<%
-    String path = request.getContextPath();
-%>
 <head>
     <meta charset="UTF-8">
     <title>Trial</title>
@@ -27,7 +23,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="关键词查询" name="condition" value="${condition}">
                         <span class="input-group-btn">
-                        <a href="${ctx}/Trail/search"><button class="btn btn-danger btn-search" type="submit">
+                        <a href="${ctx}/Item/shoplist"><button class="btn btn-danger btn-search" type="submit">
                             <i class="fa fa-search" aria-hidden="true"></i>搜索</button></a>
                       </span>
                     </div>

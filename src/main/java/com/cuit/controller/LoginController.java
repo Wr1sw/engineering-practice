@@ -39,16 +39,6 @@ public class LoginController {
     @Autowired
     private ItemService itemService;
 
-    @Autowired
-    private StringUtils stringUtils;
-
-    /**
-     * Create by Miracle
-     * function  通过set方法注入StringUtils
-     * @param stringUtils
-     */
-    public void setStringUtils(StringUtils stringUtils) {
-    }
 
     /**
      * 管理员登录前
@@ -143,7 +133,7 @@ public class LoginController {
     @RequestMapping("/toRes")
     public String toRes(User u) {
         userService.insert(u);
-        return "uLogin";
+        return "login/uLogin";
     }
     /**
      * 普通用户登录入口

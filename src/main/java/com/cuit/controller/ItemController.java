@@ -31,8 +31,6 @@ public class ItemController extends BaseController {
 
     @Autowired
     private ItemCategoryService itemCategoryService;
-    @Autowired
-    private StringUtils stringUtils;
 
     /**
      * 分页查询商品列表
@@ -68,7 +66,7 @@ public class ItemController extends BaseController {
      * by wr1sw
      */
     @RequestMapping("/exAdd")
-    public String exAdd(Item item, @RequestParam("file") CommonsMultipartFile[] files, HttpServletRequest request) throws IOException {
+    public String exAdd(Item item, @RequestParam("files") CommonsMultipartFile[] files, HttpServletRequest request) throws IOException {
         itemCommon(item, files, request);
         item.setGmNum(0);
         item.setIsDelete(0);
@@ -103,7 +101,7 @@ public class ItemController extends BaseController {
     /**
      * 新增和更新的公共方法
      */
-    private void itemCommon(Item item, @RequestParam("file") CommonsMultipartFile[] files, HttpServletRequest request) throws IOException {
+    private void itemCommon(Item item, @RequestParam("files") CommonsMultipartFile[] files, HttpServletRequest request) throws IOException {
         if(files.length>0) {
             for (int s = 0; s < files.length; s++) {
                 String n = UUIDUtils.create();
@@ -143,14 +141,6 @@ public class ItemController extends BaseController {
         itemService.updateById(obj);
         return "redirect:/Item/findBySql";
     }
-    /**
-     * Create by Miracle
-     * function 通过配置文件注入StringUtils
-     * @param stringUtils
-     */
-    public void setStringUtils(StringUtils stringUtils) {
-        this.stringUtils = stringUtils;
-    }
 
     /**
      * Modified by Miracle
@@ -167,18 +157,8 @@ public class ItemController extends BaseController {
             model.addAttribute("condition",condition);
         }
         Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
-//        int pagersSize = pagers.getDatas().size();
         int size = 0;
         size = (int) ((int)pagers.getDatas().size()/3);
-//        if(pagersSize>=13){
-//            size = 6;
-//        }else{
-//            if(pagersSize % 4 == 0){
-//                size = pagersSize / 4 + 1;
-//            }else{
-//                size = (int)(pagersSize / 4) + 2;
-//            }
-//        }
         sqlForAds += size;
         List<Item> ads = itemService.listBySqlReturnEntity(sqlForAds);
         model.addAttribute("ads",ads);

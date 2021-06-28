@@ -53,35 +53,35 @@
             <div class="form-group">
                 <div class="label"><label>主图：</label></div>
                 <div class="field">
-                    <input type="file" class="input w50" name="file" />
+                    <input type="file" class="input w50" name="files" />
                     <div class="tips"></div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="label"><label>副图1：</label></div>
                 <div class="field">
-                    <input type="file" class="input w50" name="file" />
+                    <input type="file" class="input w50" name="files" />
                     <div class="tips"></div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="label"><label>副图2：</label></div>
                 <div class="field">
-                    <input type="file" class="input w50" name="file" />
+                    <input type="file" class="input w50" name="files" />
                     <div class="tips"></div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="label"><label>副图3：</label></div>
                 <div class="field">
-                    <input type="file" class="input w50" name="file" />
+                    <input type="file" class="input w50" name="files" />
                     <div class="tips"></div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="label"><label>副图4：</label></div>
                 <div class="field">
-                    <input type="file" class="input w50" name="file" />
+                    <input type="file" class="input w50" name="files" />
                     <div class="tips"></div>
                 </div>
             </div>

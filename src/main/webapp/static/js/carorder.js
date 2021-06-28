@@ -78,7 +78,6 @@ function Delete(id){
                     $("#"+id).remove();
                 }
             }
-
         );
     }
 
@@ -133,8 +132,8 @@ function Pay(){
             var ID =  $(this).attr("ID"); //使用attr属性获取ID 或者其他的属性
             s += ID+",";
         });
-        RemovePayed();
         window.location.href = "/engineering_practice/itemOrder/orderDetail?ids="+s;
+        RemovePayed();
     }else {
         alert("请您选择购买的商品");
     }
