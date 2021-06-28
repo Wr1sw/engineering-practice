@@ -38,7 +38,7 @@
                                 <button class="btn btn-primary btn-block" onclick="Login();">登录</button>
                             </div>
                             <div class="margin-top20 text-center">
-                                没有账号？ <a href="../signup.jsp">创建</a>
+                                没有账号？ <a href="${ctx}/login/res">创建</a>
                             </div>
                         </form>
                     </div>

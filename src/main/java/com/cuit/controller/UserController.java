@@ -24,11 +24,25 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/findBySql")
+    public String findBySql(Model model,User user){
+        String sql = "select * from user where 1=1 ";
+        if(!isEmpty(user.getUserName())){
+            sql += " and userName like '%"+user.getUserName()+"%' ";
+        }
+        sql+=" order by id";
+        Pager<User> pagers = userService.findBySqlRerturnEntity(sql);
+        model.addAttribute("pagers",pagers);
+        model.addAttribute("obj",user);
+        return "user/user";
+    }
+
     /**
      * 查看用户信息
      * @param model
      * @param request
      * @return
+     * by wr1sw
      */
     @RequestMapping("/view")
     public String view(Model model, HttpServletRequest request){

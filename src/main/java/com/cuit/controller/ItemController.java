@@ -24,6 +24,22 @@ public class ItemController extends BaseController {
     private StringUtils stringUtils;
 
     /**
+     * 分页查询商品列表
+     * by wr1sw
+     */
+    @RequestMapping("/findBySql")
+    public String findBySql(Model model, Item item){
+        String sql = "select * from item where isDelete = 0 ";
+        if(!isEmpty(item.getName())){
+            sql += " and name like '%" + item.getName() + "%' ";
+        }
+        sql += " order by id desc";
+        Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
+        model.addAttribute("pagers",pagers);
+        model.addAttribute("obj",item);
+        return "item/item";
+    }
+    /**
      * Create by Miracle
      * function 通过配置文件注入StringUtils
      * @param stringUtils
@@ -35,6 +51,7 @@ public class ItemController extends BaseController {
     /**
      * Modified by Miracle
      * 按照关键字或者二级分类查询
+     * Create by wr1sw
      */
     @RequestMapping("/shoplist")
     public String shoplist(Item item, String condition, Model model) {
@@ -46,17 +63,18 @@ public class ItemController extends BaseController {
             model.addAttribute("condition",condition);
         }
         Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
-        int pagersSize = pagers.getDatas().size();
+//        int pagersSize = pagers.getDatas().size();
         int size = 0;
-        if(pagersSize>=13){
-            size = 6;
-        }else{
-            if(pagersSize % 4 == 0){
-                size = pagersSize / 4 + 1;
-            }else{
-                size = (int)(pagersSize / 4) + 2;
-            }
-        }
+        size = (int) ((int)pagers.getDatas().size()/2.35);
+//        if(pagersSize>=13){
+//            size = 6;
+//        }else{
+//            if(pagersSize % 4 == 0){
+//                size = pagersSize / 4 + 1;
+//            }else{
+//                size = (int)(pagersSize / 4) + 2;
+//            }
+//        }
         sqlForAds += size;
         List<Item> ads = itemService.listBySqlReturnEntity(sqlForAds);
         model.addAttribute("ads",ads);
