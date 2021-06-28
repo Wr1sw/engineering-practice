@@ -206,10 +206,23 @@ public class LoginController {
         request.getSession().setAttribute(Consts.USERID, user.getId());
         return "redirect:/login/uIndex";
     }
+
     @RequestMapping("/pLogin")
     public String pLogin(){
         return "login/pLogin";
     }
 
-
+    /**
+     * create by Miracle
+     * function: 将用户实体传向view.jsp
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping("/view")
+    public String View(Model model, HttpServletRequest request){
+        User user = userService.getById((Integer)request.getSession().getAttribute(Consts.USERID));
+        model.addAttribute("obj",user);
+        return "user/view";
+    }
 }
