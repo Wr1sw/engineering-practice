@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 2021/6/8
-  Time: 10:07
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page import="com.cuit.utils.StringUtils" %>
+
 <%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglibs.jsp"%>
 <%@ page import="com.cuit.utils.Consts" %>
@@ -41,10 +34,10 @@
 <body>
 <!--主体-->
 <div class="row" style="padding: 35px"align="center">
-        <img src="${ctx}/static/images/500error.png" width="1700px" height="750px" align="center">
+        <img src="${ctx}/static/images/Error/500error.png" width="1700px" height="750px" align="center">
 </div>
 <div class="jumbotron" style="padding: 0px">
-        <p><a class="btn btn-lg btn-success" href="#" role="button">回到首页</a></p>
+        <p><a class="btn btn-lg btn-success" href="${ctx}/login/uIndex" role="button">回到首页</a></p>
 </div>
 </body>
 <script src="${ctx}/static/js/mall.js"></script>
