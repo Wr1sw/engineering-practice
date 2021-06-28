@@ -199,7 +199,6 @@ public class LoginController {
     @RequestMapping("/telPhone")
     public String LoginByPhone(HttpServletRequest request){
         String phone = request.getParameter("Phone");
-        System.out.println(phone+"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         String sql = "select * from  user where phone="+phone;
         User user = userService.getBySqlReturnEntity(sql);
         request.getSession().setAttribute("role", 2);
