@@ -1019,9 +1019,14 @@
 	/********************右侧商品列表结束********************/
 	/*分页*/
 	.page-num{
-		width: 350px;
-		margin-right: 600px;
+		width: 400px;
+		margin-right: 350px;
 		float: right;
+
+	}
+	.page-num1{
+		position:absolute;
+		left:50%;
 	}
 
 /*****************************搜索页面结束*****************************/

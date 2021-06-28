@@ -209,70 +209,76 @@
                     </c:forEach>
         </div>
     </div>
-</div>
+        </div>
         <div class="page-num">
             <nav>
+                    <pg:pager url="${ctx}/Item/shoplist" maxIndexPages="5" items="${pagers.total}" maxPageItems="15" export="curPage=pageNumber">
+
+
                 <ul class="pagination">
                     <li>
                         <a>
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <pg:pager url="${ctx}/Item/shoplist" maxIndexPages="5" items="${pagers.total}" maxPageItems="15" export="curPage=pageNumber">
-                        <pg:last>
-                            <li>
-                                共${pagers.total}记录，共${pageNumber}页，
-                            </li>
-                        </pg:last>
-                        <li>
-                            当前第${curPage}页
-                        </li>
                         <pg:first>
-                    <li>
-                        <a href="${pageUrl}">首页</a>
-                    </li>
+                            <li>
+                                <a href="${pageUrl}">首页</a>
+                            </li>
 
                         </pg:first>
                         <pg:prev>
-                    <li>
-                        <a href="${pageUrl}">上一页</a>
-                    </li>
+                            <li>
+                                <a href="${pageUrl}">上一页</a>
+                            </li>
+                        </pg:prev>
+                        <pg:pages>
+                            <c:choose>
+                                <c:when test="${curPage eq pageNumber}">
 
-                    </pg:prev>
-                    <pg:pages>
-                        <c:choose>
-                            <c:when test="${curPage eq pageNumber}">
-                                <font color="red">[${pageNumber}]</font>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="${pageUrl}">${pageNumber}</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </pg:pages>
-                    <pg:next>
-                    <li>
-                        <a href="${pageUrl}">下一页</a>
-                    </li>
-                    </pg:next>
-                    <pg:last>
-                        <c:choose>
-                            <c:when test="${curPage eq pageNumber}">
-                                <font color="red">尾页</font>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="${pageUrl}">尾页</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </pg:last>
-                    </pg:pager>
+                                <li >
+                                    <a><font color="red">[${pageNumber}]</font></a>
+
+                                </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li>
+                                    <a href="${pageUrl}">${pageNumber}</a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                        </pg:pages>
+                        <pg:next>
+                            <li>
+                                <a href="${pageUrl}">下一页</a>
+                            </li>
+                        </pg:next>
+                        <pg:last>
+                            <c:choose>
+                                <c:when test="${curPage eq pageNumber}">
+                                    <font color="red">尾页</font>
+                                </c:when>
+                                <c:otherwise>
+                                    <li>
+                                    <a href="${pageUrl}">尾页</a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                        </pg:last>
+
                     <li>
                         <a href="#">
                             <span>&raquo;</span>
                         </a>
                     </li>
                 </ul>
+                <div class="page-num1">
+                当前第${curPage}页,
+                <pg:last>共${pageNumber}页，共${pagers.total}记录</pg:last>
+                </pg:pager>
+                </div>
             </nav>
-</div>
+        </div>
 <div class="clearfix"></div>
 <%@include file="../Footer.jsp"%>
 </body>
