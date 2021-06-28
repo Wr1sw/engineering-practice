@@ -37,6 +37,24 @@ public class ItemOrderController extends BaseController {
     private ItemService itemService;
 
     /**
+     * 订单管理列表
+     * by wr1sw
+     */
+    @RequestMapping("/findBySql")
+    public String findBySql(ItemOrder itemOrder, Model model){
+        //分页查询
+        String sql = "select * from item_order where 1=1 ";
+        if(!(isEmpty(itemOrder.getCode()))){
+            sql +=" and code like '%"+itemOrder.getCode()+"%' ";
+        }
+        sql += " order by id desc";
+        Pager<ItemOrder> pagers = itemOrderService.findBySqlRerturnEntity(sql);
+        model.addAttribute("pagers",pagers);
+        //存储查询条件
+        model.addAttribute("obj",itemOrder);
+        return "itemOrder/itemOrder";
+    }
+    /**
      * Create by wys
      * modified by Miracle
      * function: 查看我的订单记录
@@ -48,6 +66,9 @@ public class ItemOrderController extends BaseController {
         User user = userService.getById(Id);
         String sql = "select * from item_order where user_id = "+Id ;
         ArrayList<ItemOrder> itemOrders = (ArrayList<ItemOrder>) itemOrderService.listBySqlReturnEntity(sql);
+        System.out.println("++++++++++++++++++");
+        System.out.println(itemOrders);
+        System.out.println("++++++++++++++++++");
         for(ItemOrder order: itemOrders){
             order.setTotal(itemService.getById(order.getItemId()).getName());
         }
@@ -68,8 +89,14 @@ public class ItemOrderController extends BaseController {
         String s = request.getParameter("ids");
         String ids = s.replaceAll("c","");
         String []str = ids.split(",");
+        System.out.println("++++++++++++++++++++++++++++++++++");
+        System.out.println(str);
+        System.out.println("++++++++++++++++++++++++++++++++++");
         ArrayList<Car> cars = new ArrayList<>();
         for(String i : str){
+            System.out.println("----------------------------------");
+            System.out.println(i);
+            System.out.println("----------------------------------");
             cars.add(carService.load(Integer.parseInt(i)));
         }
         for(Car car: cars){
