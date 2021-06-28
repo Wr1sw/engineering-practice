@@ -186,7 +186,7 @@
                         <a href="${ctx}/Item/view?id=${data.id}">
                             <div class="item-show-info">
                                 <div>
-                                    <img src="${ctx}${data.url1}" alt="" height="220" width="220">
+                                    <img src="${ctx}${data.url1}" alt="" height="180" width="180">
                                 </div>
                                 <div class="item-show-price">
                                 <span>
