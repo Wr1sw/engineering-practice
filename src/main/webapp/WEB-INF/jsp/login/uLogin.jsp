@@ -32,7 +32,7 @@
 
                             <div class="form-group">
                                 <label for="password"></label>
-                                <input id="password" type="password" class="form-control" name="passPord" placeholder="密码" required data-eye>
+                                <input id="password" type="password" class="form-control" name="passWord" placeholder="密码" required data-eye>
                             </div>
 
                             <div class="form-group">
