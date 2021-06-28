@@ -1,7 +1,7 @@
 
 /********************************************shopCar.jsp用的js函数***********************************************/
-let pathName = window.document.location.pathname;
-let address =pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+// let pathName = window.document.location.pathname;
+// let address =pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
 /*
     Cal()函数用到的全局变量
 */
@@ -21,8 +21,9 @@ var AllCheckFlag = 0;
  * @constructor
  */
 function Add(id){
+    alert(address);
     $.ajax({
-        url:address+"/car/addNum",
+        url:"/car/addNum",
         type:"POST",
         data: {"id":id,"condition":1},
         success: function (result){
@@ -46,7 +47,7 @@ function Reduce(id){
         alert("商品的购买数量不能小于1");
     }else{
         $.ajax({
-            url:address+"/car/addNum",
+            url:"/car/addNum",
             type:"POST",
             data: {"id":id,"condition":0},
             async:false,
@@ -72,7 +73,7 @@ function Delete(id){
         alert("正在结算不可删除");
     }else{
         alert("确定要删除?");
-        $.get(address+"/car/delete?id="+id,
+        $.get("/car/delete?id="+id,
             function (data){
                 var rs = JSON.parse(data);
                 if(rs.result){
@@ -136,7 +137,7 @@ function Pay(){
             s += ID+",";
         });
         RemovePayed();
-        window.location.href = address+"/itemOrder/orderDetail?ids="+s;
+        window.location.href = "/itemOrder/orderDetail?ids="+s;
     }else {
         alert("请您选择购买的商品");
     }
@@ -185,7 +186,7 @@ function Account(){
         s += value+";";
     });
     $.ajax({
-        url:address+"/itemOrder/addBuyRecord",
+        url:"/itemOrder/addBuyRecord",
         type: "POST",
         data: {"data":s},
         success: function (data){
