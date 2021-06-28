@@ -1,5 +1,7 @@
 
 /********************************************shopCar.jsp用的js函数***********************************************/
+let pathName = window.document.location.pathname;
+let address =pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
 /*
     Cal()函数用到的全局变量
 */
@@ -20,7 +22,7 @@ var AllCheckFlag = 0;
  */
 function Add(id){
     $.ajax({
-        url:"/engineering_practice/car/addNum",
+        url:address+"/car/addNum",
         type:"POST",
         data: {"id":id,"condition":1},
         success: function (result){
@@ -44,7 +46,7 @@ function Reduce(id){
         alert("商品的购买数量不能小于1");
     }else{
         $.ajax({
-            url:"/engineering_practice/car/addNum",
+            url:address+"/car/addNum",
             type:"POST",
             data: {"id":id,"condition":0},
             async:false,
@@ -70,7 +72,7 @@ function Delete(id){
         alert("正在结算不可删除");
     }else{
         alert("确定要删除?");
-        $.get("/engineering_practice/car/delete?id="+id,
+        $.get(address+"/car/delete?id="+id,
             function (data){
                 var rs = JSON.parse(data);
                 if(rs.result){
@@ -78,6 +80,7 @@ function Delete(id){
                     $("#"+id).remove();
                 }
             }
+
         );
     }
 
@@ -132,8 +135,8 @@ function Pay(){
             var ID =  $(this).attr("ID"); //使用attr属性获取ID 或者其他的属性
             s += ID+",";
         });
-        window.location.href = "/engineering_practice/itemOrder/orderDetail?ids="+s;
         RemovePayed();
+        window.location.href = address+"/itemOrder/orderDetail?ids="+s;
     }else {
         alert("请您选择购买的商品");
     }
@@ -171,20 +174,7 @@ function RemovePayed(){
         var id =  $(this).attr("id"); //使用attr属性获取ID 或者其他的属性
         id = id.substr(1);
         $("#"+id).remove();
-        // $.ajax({
-        //     url:"/engineering_practice/car/delete",
-        //     type:"POST",
-        //     data:{"id":id},
-        //     success:function (data){
-        //         var rs = JSON.parse(data);
-        //         if(rs.result){
-        //             $("#"+id).remove();
-        //         }
-        //     },
-        //     error: function (){
-        //         alert("请求错误");
-        //     }
-        // });
+
     });
 }
 /************************************************orderDetail.jsp用的js函数**********************************************************/
@@ -195,13 +185,13 @@ function Account(){
         s += value+";";
     });
     $.ajax({
-        url:"/engineering_practice/itemOrder/addBuyRecord",
+        url:address+"/itemOrder/addBuyRecord",
         type: "POST",
         data: {"data":s},
         success: function (data){
             var res = JSON.parse(data);
             if(res.result == 1){
-                window.location.href = "/engineering_practice/itemOrder/account";
+                window.location.href = address+"/itemOrder/account";
             }else{
                 alert("订单保存失败");
             }
