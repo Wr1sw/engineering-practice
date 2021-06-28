@@ -170,20 +170,22 @@ $("#allCheck").click(
 function RemovePayed(){
     $('input:checkbox[name=checkbox]:checked').each(function(){
         var id =  $(this).attr("id"); //使用attr属性获取ID 或者其他的属性
-        $.ajax({
-            url:"/engineering_practice/car/delete",
-            type:"POST",
-            data:{"id":id},
-            success:function (data){
-                var rs = JSON.parse(data);
-                if(rs.result){
-                    $("#"+id).remove();
-                }
-            },
-            error: function (){
-                alert("请求错误");
-            }
-        });
+        id = id.substr(1);
+        $("#"+id).remove();
+        // $.ajax({
+        //     url:"/engineering_practice/car/delete",
+        //     type:"POST",
+        //     data:{"id":id},
+        //     success:function (data){
+        //         var rs = JSON.parse(data);
+        //         if(rs.result){
+        //             $("#"+id).remove();
+        //         }
+        //     },
+        //     error: function (){
+        //         alert("请求错误");
+        //     }
+        // });
     });
 }
 /************************************************orderDetail.jsp用的js函数**********************************************************/
