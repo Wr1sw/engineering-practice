@@ -126,7 +126,7 @@
             <c:forEach items="${ads}" var="ad">
                 <div class="item-as"><!--商品开始-->
                     <div class="item-as-img"><!--商品的图片-->
-                        <img src="${ctx}${ad.url1}" alt="">
+                        <a href="${ctx}/Item/view?id=${ad.id}"><img src="${ctx}${ad.url1}" alt=""></a>
                     </div>
                     <div class="item-as-price"><!--商品的价格-->
                         <span>
