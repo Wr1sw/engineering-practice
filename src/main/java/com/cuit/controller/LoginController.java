@@ -149,7 +149,6 @@ public class LoginController {
      */
     @RequestMapping("/uLoginTo")
     public String uLoginTo(User u, HttpServletRequest request) {
-
         User byEntity = userService.getByEntity(u);
         if(byEntity == null) {
             return "redirect:/login/res";
