@@ -1,7 +1,5 @@
 
 /********************************************shopCar.jsp用的js函数***********************************************/
-// let pathName = window.document.location.pathname;
-// let address =pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
 /*
     Cal()函数用到的全局变量
 */
@@ -21,7 +19,6 @@ var AllCheckFlag = 0;
  * @constructor
  */
 function Add(id){
-    alert(address);
     $.ajax({
         url:"/car/addNum",
         type:"POST",
